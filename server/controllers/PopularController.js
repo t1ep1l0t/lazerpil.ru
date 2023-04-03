@@ -1,5 +1,6 @@
 import PopularModel from "../models/PopularModel.js";
 import FileService from "../services/PopularFileService.js";
+import PopularFileService from "../services/PopularFileService.js";
 
 class PopularController {
 
@@ -20,7 +21,7 @@ class PopularController {
                 name: name,
                 desc: desc,
                 price: price,
-                picture: '/popular_images/' + picture
+                picture: picture
             });
 
             return res.json(new_popular);
@@ -58,7 +59,7 @@ class PopularController {
                 name: name,
                 desc: desc,
                 price: price,
-                picture: '/popular_images/' + picture
+                picture: picture
             };
 
             const old_popular = await PopularModel.findByIdAndUpdate({_id: id}, update, {new: true});
@@ -109,6 +110,12 @@ class PopularController {
     }
     async delete_all_popular (req, res) {
         try {
+            const populars_folder = await PopularModel.find();
+
+            populars_folder.forEach(popular => {
+                PopularFileService.deleteFile(popular.picture);
+            });
+
             const populars = await PopularModel.deleteMany({});
 
             res.status(200).json(populars);
@@ -129,6 +136,8 @@ class PopularController {
                     message: 'Блок с таким id не найден'
                 })
             }
+
+            PopularFileService.deleteFile(popular.picture);
 
             return res.status(200).json(popular);
         } catch (e) {
