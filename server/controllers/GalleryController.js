@@ -54,6 +54,12 @@ class GalleryController {
     }
     async delete_all_photos (req, res) {
         try {
+            const files_folder = await GalleryModel.find();
+
+            files_folder.forEach(file => {
+                GalleryFileService.deleteFile(file.name);
+            });
+
             const files = await GalleryModel.deleteMany({});
 
             res.json(files);
@@ -71,7 +77,9 @@ class GalleryController {
 
             const picture = await GalleryModel.findByIdAndDelete(id);
 
-            res.json(picture)
+            GalleryFileService.deleteFile(picture.name);
+
+            res.json(picture);
 
         } catch (e) {
             console.log(e);

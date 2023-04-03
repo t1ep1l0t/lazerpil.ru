@@ -1,5 +1,6 @@
 import * as path from "path";
 import * as uuid from 'uuid'
+import * as fs from "fs";
 
 
 
@@ -13,6 +14,14 @@ class GalleryFileService {
         } catch (e) {
             console.log(e);
         }
+    }
+
+    deleteFile (picture_name) {
+        fs.unlink(path.resolve(`../client/dist/gallery/${picture_name}`), err => {
+            if(err) throw err; // не удалось удалить файл
+            console.log('Файл успешно удалён');
+        });
+        return picture_name
     }
 }
 
