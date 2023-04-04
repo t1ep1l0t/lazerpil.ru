@@ -27,8 +27,21 @@ body {
 }
 
 .container {
-  max-width: 1240px;
+  max-width: 1240px!important;
+  width: 100%!important;
+  padding: 0 20px!important;
+  margin: 0 auto!important;
+}
+
+.v-expansion-panel-content__wrap {
   width: 100%;
-  padding: 0 20px;
-  margin: 0 auto;
+  display: flex!important;
+  flex-direction: column;
+  align-items: start;
+  gap: 35px;
+  padding: 0 30px!important;
+
+  @media(max-width: 550px) {
+    padding: 0!important;
+  }
 }

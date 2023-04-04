@@ -104,12 +104,12 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 10px;
+    gap: 20px;
   }
   &__link {
     font-weight: 700;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 18px;
+    line-height: 22px;
     color: #555555;
     text-transform: uppercase;
     transition: color .3s ease;

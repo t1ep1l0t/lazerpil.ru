@@ -24,7 +24,6 @@
         </div>
       </div>
     </section>
-
     <section class="popular">
       <div class="container">
         <div class="popular__inner">
@@ -33,20 +32,91 @@
           </div>
           <div class="popular__content">
             <VueSlickCarousel class="popular__slider"
-                              v-if="$store.state.popular"
+                              v-if="popular"
                               v-bind="slider_settings"
             >
               <div class="popular__slide"
-                   v-for="item of $store.state.popular"
+                   v-for="item of popular"
                    :key="item._id"
               >
-                    <img :src="'/popular_images/' + item.picture" alt="" class="popular__slide__img">
-<!--                <img src="../../dist/popular_images/5ea4d8f6-83f5-40c1-a1be-a4385c735806.jpg" alt="" class="popular__slide__img">-->
+<!--                    <img :src="'/popular_images/' + item.picture" alt="" class="popular__slide__img">-->
+                <img src="../assets/static-images/popular-1.png" alt="" class="popular__slide__img">
                 <h3 class="popular__slide__title">{{ item.name }}</h3>
                 <span class="popular__slide__desc">{{ item.desc }}</span>
                 <span class="popular__slide__price">{{ item.price }} ₽</span>
               </div>
             </VueSlickCarousel>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="about">
+      <div class="container">
+        <div class="about__inner">
+          <div class="about__head">
+            <h2 class="about__title">О СТУДИИ</h2>
+          </div>
+          <div class="about__content">
+            <div class="about__image">
+              <img src="../assets/static-images/home_about-1.png" alt="" class="img">
+            </div>
+            <div class="about__info">
+              <img src="../assets/static-images/home_about-2.png" alt="" class="img">
+              <p class="about__desc">
+                Предлагаем вам сделать шаг
+                в будущее, к использованию новых современных технологий
+              </p>
+              <router-link to="/about-us" class="about__link">подробнее</router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="faq">
+      <div class="container">
+        <div class="faq__inner">
+          <div class="faq__head">
+            <h2 class="faq__title">ВОПРОСЫ И ОТВЕТЫ</h2>
+          </div>
+          <div class="faq__content">
+            <v-expansion-panels class="faq__list"
+                                :accordion="true"
+            >
+              <v-expansion-panel class="faq__item"
+                                 v-for="faq of faqs"
+                                 :key="faq._id"
+              >
+                <v-expansion-panel-header>
+                  <span class="faq__name">{{ faq.question }}</span>
+                  <template v-slot:actions>
+                    <div class="faq__icon">
+                      <svg class="icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M30 10L10 30" stroke="#40AAA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 10L30 30" stroke="#40AAA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </template>
+                </v-expansion-panel-header>
+                <v-expansion-panel-content class="faq__body">
+                  <div class="faq__body__item"
+                       v-for="(item, index) of faq.answer"
+                       :key="index"
+                  >
+                    <h3 class="faq__bold__text" v-if="item.type === 'text-bold'">{{ item.value }}</h3>
+                    <span class="faq__text" v-if="item.type === 'text'">{{ item.value }}</span>
+                    <ul class="faq__body__list" v-if="item.type === 'list'">
+                      <li class="faq__body__item"
+                          v-for="(string, index) of item.value"
+                          :key="index"
+                      >
+                        {{ string }}
+                      </li>
+                    </ul>
+                    <img src="../assets/static-images/faq-picture.png" alt="" class="faq__img" v-if="item.type === 'picture'">
+                  </div>
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
           </div>
         </div>
       </div>
@@ -71,18 +141,313 @@ export default {
         autoplaySpeed: 6000,
         slidesToScroll: 1,
         slidesToShow: 4,
-        swipeToSlide: true
-      }
+        swipeToSlide: true,
+        infinite: true,
+        responsive: [
+          {
+            breakpoint: 980,
+            settings: {
+              slidesToShow: 3,
+            }
+          },
+          {
+            breakpoint: 720,
+            settings: {
+              slidesToShow: 2,
+            }
+          },
+          {
+            breakpoint: 500,
+            settings: {
+              slidesToShow: 1,
+            }
+          }
+        ]
+      },
+      popular: [
+        {
+          _id: 1,
+          name: 'Комплекс "Лайт"',
+          desc: '(бикини тотально, ноги полностью, пальчики на ногах)',
+          price: 3800,
+          picture: '../assets/static-images/popular-1.png'
+        },
+        {
+          _id: 2,
+          name: 'Комплекс "топ"',
+          desc: '(подмышечные впадины, бикини тотально, голени+колени)',
+          price: 3800,
+          picture: '../assets/static-images/popular-1.png'
+        },
+        {
+          _id: 3,
+          name: 'Комплекс "все тело"',
+          desc: '(подмышечные впадины, бикини тотальное, ноги полностью, пальчики на ногах, руки полностью,\n' +
+              'пальчики на руках)',
+          price: 3800,
+          picture: '../assets/static-images/popular-1.png'
+        },
+        {
+          _id: 4,
+          name: 'Комплекс "классика"',
+          desc: '(подмышечные впадины, бикини тотальное, ноги полностью, пальчики на ногах)',
+          price: 3800,
+          picture: '../assets/static-images/popular-1.png'
+        },
+        {
+          _id: 5,
+          name: 'Сертификат',
+          desc: 'Подарочный сертификат на посещение',
+          price: 3800,
+          picture: '../assets/static-images/popular-1.png'
+        }
+      ],
+      faqs: [
+        {
+          _id: 1,
+          question: 'Как воздействует лазер?',
+          answer: [
+            {
+              type: 'list',
+              value: [
+                  'Лазерная манипула производит световые лучи, вспышки. Что создает направленное воздействие лазера на фолликулы, в результате чего в структуре волоса разрушается пигмент меланин и нарушается кровоснабжение фолликула, волос отмирает и выпадает.',
+                  'Действие лазера направлено на разрушение волос, находящихся в стадии роста, и не распространяется на неактивные «спящие» волосяные фолликулы.',
+                  'Последующие процедуры проводятся, в интервале 3-6 недель, когда оставшиеся волоски переходят в активную стадию роста.'
+              ]
+            },
+            {
+              type: 'text',
+              value: 'В 21 веке Диодный лазер считается самым современным и передовым методом удаления волос'
+            }
+          ]
+        },
+        {
+          _id: 2,
+          question: 'Преимущества диодной эпиляции?',
+          answer: [
+            {
+              type: 'text',
+              value: 'На сегодняшний день в индустрии существует множество способов удаления нежелательных волос:'
+            },
+            {
+              type: 'list',
+              value:[
+                  'шагаринг',
+                  'воск',
+                  'электроэпиляция',
+                  'фотоэпиляция',
+                  'лазерная эпиляция',
+              ]
+            },
+            {
+              type: 'text',
+              value: 'Где представлены три различающихся по длине волны лазера:'
+            },
+            {
+              type: 'list',
+              value: [
+                  'Александритовый (755 нм)',
+                  'Диодный (808 нм)',
+                  'Неодимовый (1064 нм)'
+              ]
+            },
+            {
+              type: 'text',
+              value: 'Передовым по праву считается диодный он является самым современным последним лазером в линейке удаления волос, что даёт ему ряд преимуществ:'
+            },
+            {
+              type: 'list',
+              value: [
+                'отсутствие риска ожогов кожи, при использовании диодного лазера нет такого нагрева кожи, как у остальных лазеров',
+                'способность лазера удалять волосы любого цвета (кроме седых), на всех фото типах кожи: от бледной до очень смуглой',
+                'нет необходимости отращивания волос перед процедурой',
+                'нет ограничений в бритье между процедурами',
+                'отсутствие вросших волос',
+                'скорость проведения процедуры',
+                'безболезненность процедуры (что на данный момент является самым безболезненным способом удаления волос)',
+                'по окончанию курса вы получаете гладкую кожу, результат сохраняется на долгие годы'
+              ]
+            },
+          ]
+        },
+        {
+          _id: 3,
+          question: 'Противопоказания для процедуры лазерной эпиляции?',
+          answer: [
+            {
+              type: 'list',
+              value: [
+                  'склонность к образованию келоидных рубцов;',
+                  'простуда, повышенная температура тела;',
+                  'онкология, в этом случае процедуры можно проходить с согласованием лечащего врача;',
+                  'кожные заболевания в стадии обострения и/или острое гнойное воспаление в зоне воздействия;',
+                  'герпес в активной форме;',
+                  'ранний период после оперативного вмешательства, до 12 месяцев (в зависимости от вида оперативного вмешательства);',
+                  'беременность, кормление грудью;',
+                  'сахарный диабет;',
+                  'золотые нити в зоне проведения процедуры;',
+                  'психические расстройства, эпилепсия;',
+                  'повышенное артериальное давление (гипертензия 2-3 стадии);',
+                  'алкогольное опьянение, а также прием алкоголя накануне процедуры;',
+                  'наркотическое опьянение;',
+                  'известная повышенная чувствительность к лазерному излучению;',
+                  'прием препаратов тетрациклинового ряда, ретиноидов, сульфаниламидов, нейролептиков и НПВС (длительный прием);',
+                  ' прием препаратов изотретиноина менее чем за 6 месяцев до процедуры;',
+                  'применение топических ретиноидов менее чем за 2 недели до процедуры;',
+                  'татуировка или татуаж в зоне проведения процедуры.;',
+              ]
+            }
+          ]
+        },
+        {
+          _id: 4,
+          question: 'Что такое курс лазерной эпиляции, и сколько нужно процедур?',
+          answer: [
+            {
+              type: 'list',
+              value: [
+                  'после каждой процедуры эпиляции удаляется не менее 10% волос',
+                  'курс эпиляции повторяют до полного прекращения роста волос, количество необходимых процедур и интервалы между ними зависят от гормонального фона, структуры волос клиента, подбираются индивидуально для каждого клиента',
+                  'для разных участков тела может потребоваться разное количество процедур, в среднем курс составляет от 8 до 14 процедур',
+                  'Интервал между процедурами составляет от 3 до 6 недель',
+                  'достигнутый результат сохраняется на долгие годы',
+                  'поддерживающие процедуры'
+              ]
+            },
+            {
+              type: 'text',
+              value: 'Учитывая фактор что гормональный фон может влиять на появление новых фолликул, в период от 1 до 8 лет.\n' +
+                  '          Может возникнуть потребность в поддерживающих процедурах 1-3 процедуры в год для сохранения достигнутого результата.'
+            },
+            {
+              type: 'list',
+              value: [
+                  'Период появления новых фолликул индивидуальны он зависит от генетических особенностей организма и его гормонального фона.'
+              ]
+            },
+            {
+              type: 'text',
+              value: 'Главное вы должны знать, что это не старые фолликулы, они уже удалены. Пробуждаются только спящие новые'
+            }
+          ]
+        },
+        {
+          _id: 5,
+          question: 'Подготовка к процедуре?',
+          answer: [
+            {
+              type: 'text',
+              value: 'Как подготовиться к процедуре лазерной эпиляции:'
+            },
+            {
+              type: 'list',
+              value: [
+                  'Напоминаем! ознакомиться со списком противопоказаний, убедится, что у вас их нет!',
+                  'Отказаться от посещений пляжа и солярия за 2 недели до процедуры',
+                  'за 1 день или в день процедуры необходимо тщательно побрить эпилируемые зоны обычным бритвенным станком (внимание зона должна быть тщательно выбрита, ведь лазер воздействует на волосы длинной 0,0 мм)',
+              ]
+            }
+          ]
+        },
+        {
+          _id: 6,
+          question: 'После процедуры?',
+          answer: [
+            {
+              type: 'text',
+              value: 'После процедуры требуется не сложный восстановительный период:'
+            },
+            {
+              type: 'list',
+              value: [
+                  'воздержитесь от глубокого пилинга',
+                  'на протяжении прохождения всего курса лазерной эпиляции нельзя использовать процедуры эпиляции удаления волос с корнем (воск, пинцет, шугаринг или механический эпилятор)',
+                  'в течение 3-х дней не загорать отказаться от посещений пляжа и солярия',
+                  'В течение 2-х дней отказаться от бани, сауны, хамам, и бассейна',
+              ]
+            },
+          ]
+        },
+        {
+          _id: 7,
+          question: 'Мифы о лазерной эпиляции?',
+          answer: [
+            {
+              type: 'text',
+              value: 'Самые популярные мифы, об лазерной эпиляции, которые мы сейчас вам развеем с помощью диодного лазера:'
+            },
+            {
+              type: 'list',
+              value: [
+                  'повреждение внутренних органов',
+                  'облучение радиацией, появление новообразований',
+                  'рубцы',
+                  'врастание волос',
+                  'дикая боль во время процедуры',
+              ]
+            },
+            {
+              type: 'text',
+              value: 'А сейчас информация для тех, кто сомневается:'
+            },
+            {
+              type: 'text-bold',
+              value: 'Внутренние органы останутся в полной неприкосновенности.'
+            },
+            {
+              type: 'text',
+              value: 'Нужно понимать, что вспышка лазера проникает неглубоко, максимум на 1-3 мм, ровно на глубину волосяной луковицы, толщина кожи человека составляет 5 мм поэтому исключается риск повреждения каких-либо органов.'
+            },
+            {
+              type: 'text-bold',
+              value: 'Лазер часто путают с рентгеном.'
+            },
+            {
+              type: 'text',
+              value: 'приписывая ему все минусы радиационного облучения. Но дело в том, что радиация используется,\n' +
+                  '        например, при флюорографии, МРТ, лечении рака, но никогда в эстетической или пластической медицине.'
+            },
+            {
+              type: 'text-bold',
+              value: 'Также ошибочно представление о том, что лазерные процедуры способствуют врастанию волос.'
+            },
+            {
+              type: 'text',
+              value: 'На самом деле, все с точностью до наоборот — косметологи советуют эпиляцию лазером для борьбы с этим дефектом. Что касается рубцов, то лазерный луч не нож, он не повреждает кожу. Максимум, о чем можно говорить, это незначительное покраснение в обработанной зоне, которое проходит в течение дня.'
+            },
+            {
+              type: 'text',
+              value: 'Безболезненность процедуры'
+            },
+            {
+              type: 'list',
+              value: [
+                  'сапфировое охлаждение охлаждения манипулы: -2 -6 °C',
+                  'водяное охлаждение TEC + воздушное делает процедуру удаления волос безопасной и безболезненной (что на данный момент является самым безболезненным способом удаления волос)'
+              ]
+            },
+            {
+              type: 'text-bold',
+              value: 'Как видим, процедура максимально безопасна, при отсутствии противопоказаний и правильном проведении процедуры она не носит организму никакого вреда'
+            },
+            {
+              type: 'picture',
+              value: '../assets/static-images/faq-picture.png'
+            },
+          ]
+        },
+      ]
     }
   },
   mounted () {
-    this.$store.dispatch('get_popular');
+    //this.$store.dispatch('get_popular');
   }
 }
 </script>
 
 <style scoped lang="scss">
 @import "../assets/variables.scss";
+
 .top {
   width: 100%;
 
@@ -242,7 +607,6 @@ export default {
     }
   }
 }
-
 .popular {
   width: 100%;
   margin-top: 120px;
@@ -262,6 +626,11 @@ export default {
     font-weight: 600;
     font-size: 28px;
     line-height: 32px;
+
+    @media(max-width: 768px) {
+      font-size: 22px;
+      line-height: 38px;
+    }
   }
   &__content {
     width: 100%;
@@ -270,13 +639,17 @@ export default {
     width: 100%;
   }
   &__slide {
-    max-width: 285px;
     height: 460px;
-    margin: 0 10px;
+    padding: 0 10px;
     display: flex!important;
     flex-direction: column;
     align-items: start;
     gap: 16px;
+
+    @media(max-width: 500px) {
+      height: fit-content;
+      padding: 0 2px;
+    }
 
     &__img {
       width: 100%;
@@ -302,4 +675,247 @@ export default {
     }
   }
 }
+.about {
+  width: 100%;
+  margin-top: 120px;
+
+  &__inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 60px;
+  }
+  &__head  {
+    width: fit-content;
+    align-self: center;
+  }
+  &__title {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 32px;
+
+    @media(max-width: 768px) {
+      font-size: 22px;
+      line-height: 38px;
+    }
+  }
+  &__content {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    gap: 20px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+  &__image {
+    width: 100%;
+
+    .img {
+      width: 100%;
+      height: auto;
+      border-radius: 30px;
+    }
+  }
+  &__info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 46px;
+
+    .img {
+      width: 100%;
+      height: auto;
+      border-radius: 30px;
+    }
+
+    @media (max-width: 1199px) {
+      gap: 30px;
+    }
+  }
+  &__desc {
+    width: 100%;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 44px;
+    max-width: 563px;
+
+    @media (max-width: 1199px) {
+      max-width: none;
+    }
+    @media (max-width: 1024px) {
+      font-size: 24px;
+      line-height: 36px;
+    }
+  }
+  &__link {
+    display: block;
+    width: 100%;
+    background-color: #FFFFFF;
+    border: 1px solid $rose_light;
+    border-radius: 53px;
+    padding: 16px 0;
+    text-align: center;
+    transition: all .3s ease;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    text-transform: uppercase;
+    color: $rose_light;
+
+    &:hover {
+      background-color: $rose_light;
+      color: #FFFFFF;
+    }
+  }
+}
+.faq {
+  width: 100%;
+  margin-top: 120px;
+
+  &__inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 60px;
+  }
+  &__head  {
+    width: fit-content;
+    align-self: center;
+  }
+  &__title {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 32px;
+
+    @media(max-width: 768px) {
+      font-size: 22px;
+      line-height: 38px;
+    }
+  }
+  &__content {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    gap: 20px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+  &__list {
+    width: 100%;
+    display: flex!important;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+
+    .v-expansion-panel::before {
+      box-shadow: none!important;
+    }
+    .v-expansion-panel-header {
+      overflow: hidden;
+      width: 100%;
+      display: flex!important;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 40px 40px 40px 30px!important;
+
+      @media(max-width: 550px) {
+        padding: 20px 0!important;
+      }
+    }
+    .v-expansion-panel-header > :not(.v-expansion-panel-header__icon) {
+      flex: none!important;
+    }
+    .v-expansion-panel:not(:first-child)::after {
+      border-top: none!important;
+    }
+    .v-expansion-panel-header--active {
+      .faq__icon {
+        transform: rotate(0deg);
+      }
+    }
+  }
+  &__item {
+    width: 100%;
+  }
+  &__name {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: $blue;
+    width: calc(100% - 70px);
+    text-align: left;
+
+    @media(max-width: 768px) {
+      font-size: 20px;
+      line-height: 24px;
+    }
+    @media(max-width: 550px) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+  &__icon {
+    width: 40px;
+    height: 40px;
+    transform: rotate(45deg);
+    transition: all .3s ease;
+
+    .icon {
+      width: 40px;
+      height: 40px;
+
+      @media (max-width: 550px) {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  &__bold__text {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+  }
+  &__text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+  }
+  &__body__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+    list-style: disc;
+    padding-left: 20px;
+  }
+  &__body__item {
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+  }
+  &__img {
+    display: block;
+    margin: 0 auto;
+    max-width: 768px;
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+  }
+}
+
 </style>
