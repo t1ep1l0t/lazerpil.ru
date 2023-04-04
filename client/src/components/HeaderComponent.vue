@@ -90,7 +90,6 @@ export default {
   padding: 8px 0;
   background: #FFFFFF;
   z-index: 2;
-  border-bottom: 1px solid $blue;
 
   &__inner {
     width: 100%;
