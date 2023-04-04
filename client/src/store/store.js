@@ -5,10 +5,12 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        count: 5
+        menu: false
     },
     mutations: {
-
+        set_menu (state) {
+            state.menu = !state.menu
+        }
     }
 })
 
