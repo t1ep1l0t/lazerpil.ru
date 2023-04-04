@@ -15,12 +15,7 @@
         </li>
       </ul>
       <div class="menu__buttons">
-        <a href="tel:+78002200022"
-           class="menu__call"
-           @click.native="$store.commit('set_menu')"
-        >
-          8 (800) 22-000-22
-        </a>
+        <a href="tel:+78002200022" class="menu__call" >8 (800) 22-000-22</a>
         <router-link class="menu__contact"
                      to="/contact-us"
                      @click.native="$store.commit('set_menu')"
