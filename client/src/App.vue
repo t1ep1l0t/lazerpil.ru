@@ -3,6 +3,7 @@
     <HeaderComponent />
     <MobilMenu />
     <div id="page"><router-view /></div>
+    <FooterComponent />
   </div>
 </template>
 
@@ -10,10 +11,12 @@
 
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import MobilMenu from "@/components/MobilMenu.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
 
 export default {
   name: 'App',
   components: {
+    FooterComponent,
     MobilMenu,
     HeaderComponent
   }
