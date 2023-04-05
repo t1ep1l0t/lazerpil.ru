@@ -131,7 +131,7 @@ export default {
             }
           },
           {
-            breakpoint: 500,
+            breakpoint: 375,
             settings: {
               slidesToShow: 1,
             }
@@ -396,6 +396,9 @@ export default {
     border-radius: 50%;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     .icon {
       transition: all .3s ease;

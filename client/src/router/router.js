@@ -5,6 +5,7 @@ import AboutView from "@/views/AboutView.vue";
 import ServicesView from "@/views/ServicesView.vue";
 import ReviewsView from "@/views/ReviewsView.vue";
 import ContactsView from "@/views/ContactsView.vue";
+import GalleryView from "@/views/GalleryView.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
         path: '/contact-us',
         name: 'contact',
         component: ContactsView
+    },
+    {
+        path: '/gallery',
+        name: 'gallery',
+        component: GalleryView
     },
 ];
 

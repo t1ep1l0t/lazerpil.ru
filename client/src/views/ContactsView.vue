@@ -91,10 +91,15 @@ export default {
     line-height: 56px;
     text-transform: uppercase;
   }
+  &__content {
+    width: 100%;
+  }
   &__list {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px;
+    flex-wrap: wrap;
   }
   &__link {
     padding: 24px 30px;
@@ -109,6 +114,19 @@ export default {
 
     &:hover {
       color: $rose_light;
+    }
+
+    @media (max-width: 500px) {
+      padding: 20px;
+      gap: 15px;
+      font-size: 18px;
+      line-height: 20px;
+    }
+    @media (max-width: 374px) {
+      padding: 10px 0;
+      gap: 10px;
+      font-size: 16px;
+      line-height: 18px;
     }
   }
   &__img {

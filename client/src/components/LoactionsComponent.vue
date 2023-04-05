@@ -178,19 +178,22 @@ export default {
   }
   &__arrow {
     position: absolute;
-    top: 35%;
+    top: 25%;
     background: #FFFFFF;
     width: 36px;
     height: 36px;
     border-radius: 50%;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     .icon {
       transition: all .3s ease;
     }
     &__prev {
-      left: 20px;
+      left: 18px;
 
       &:hover {
         .icon {
@@ -199,7 +202,7 @@ export default {
       }
     }
     &__next {
-      right: 20px;
+      right: 18px;
 
       &:hover {
         .icon {

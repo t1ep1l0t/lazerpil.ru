@@ -55,12 +55,13 @@ export default {
         version: '2.1'
       },
       markerIcon: {
-        layout: 'default#imageWithContent',
-        imageHref: 'https://i.ibb.co/DgmCpy6/location1.png',
+        layout: 'default#image',
+        imageHref: 'https://i.ibb.co/866QmRN/icon.png',
         imageSize: [38, 38],
         imageOffset: [0, 0],
-
       }
+
+
     }
   }
 }

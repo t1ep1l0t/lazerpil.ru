@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="footer__block">
-          <h2 class="footer__title" style="align-self: end">Телефон</h2>
+          <h2 class="footer__title">Телефон</h2>
           <a href="tel:+78002200022" class="footer__text">8 (800) 22-000-22 </a>
         </div>
       </div>
@@ -118,6 +118,16 @@ export default {
       gap: 80px;
       justify-content: space-between;
       flex-wrap: wrap;
+
+      @media(max-width: 550px) {
+        flex-direction: column;
+        gap: 40px;
+      }
+    }
+    &__logotype {
+      @media(max-width: 550px) {
+        align-self: center;
+      }
     }
     &__block {
       display: flex;
@@ -135,6 +145,7 @@ export default {
         display: flex;
         align-items: center;
         gap: 10px;
+        flex-wrap: wrap;
       }
     }
     &__title {
