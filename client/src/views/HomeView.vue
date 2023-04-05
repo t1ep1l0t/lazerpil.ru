@@ -227,19 +227,29 @@
               :coords="[55.752285, 37.618684]"
               :zoom="10"
               ymap-class="map__box"
+              :controls="[]"
+              :behaviors="[]"
+              :scroll-zoom="true"
+              :map-events="[]"
           >
             <ymap-marker
                 :coords="[55.815934, 37.724068]"
                 marker-id="123"
-                hint-content="some hint"
-                :balloon="{header: 'header', body: 'body', footer: 'footer'}"
+                hint-content="улица Бойцовая, дом 27"
+                :balloon="{
+                  header: 'Бульвар Рокассовского',
+                  body: 'улица Бойцовая, дом 27',
+                }"
                 :icon="markerIcon"
             />
             <ymap-marker
                 :coords="[55.808022, 37.635916]"
                 marker-id="123"
-                hint-content="some hint"
-                :balloon="{header: 'header', body: 'body', footer: 'footer'}"
+                hint-content="улица проспект Мира, 95с1"
+                :balloon="{
+                  header: 'Метро Алексеевская',
+                  body: 'улица проспект Мира, 95с1',
+                }"
                 :icon="markerIcon"
             />
           </yandex-map>
@@ -603,16 +613,10 @@ export default {
       },
       markerIcon: {
         layout: 'default#imageWithContent',
-        imageHref: 'https://image.flaticon.com/icons/png/512/33/33447.png',
+        imageHref: 'https://i.ibb.co/DgmCpy6/location1.png',
         imageSize: [38, 38],
         imageOffset: [0, 0],
-        content: 'ML',
-        contentOffset: [0, 15],
-        contentLayout: '<div style="width: 38px;\n' +
-            '    height: 38px;\n' +
-            '    border-radius: 50%;\n' +
-            '    color: #FFFFFF;\n' +
-            '    background-color: #E73D8C; display: flex; align-items: center; justify-content:center;font-family: \'Comfortaa\', cursive;">$[properties.iconContent]</div>'
+
       }
     }
   },
@@ -1338,9 +1342,15 @@ export default {
 
   &__inner {
     height: 600px;
-
     .ymap-container {
       height: 600px;
+        -moz-border-radius: 14px 14px 14px 14px;
+        -webkit-border-radius: 14px 14px 14px 14px;
+        -khtml-border-radius: 14px 14px 14px 14px;
+        border-radius: 14px 14px 14px 14px;
+        overflow: hidden;
+        position: relative;
+        -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
     }
   }
   &__marker {
@@ -1357,5 +1367,6 @@ export default {
 <style>
 .map__box {
   height: 600px;
+  border-radius: 30px;
 }
 </style>
