@@ -7,14 +7,11 @@ const store = new Vuex.Store({
     state: {
         menu: false,
         service: false,
-        popular: undefined
+        populars: undefined
     },
     mutations: {
         set_menu (state) {
             state.menu = !state.menu
-        },
-        set_popular (state, payload) {
-            state.popular = payload
         },
         switch_to_woman (state) {
             state.service = false;
@@ -22,10 +19,14 @@ const store = new Vuex.Store({
         switch_to_man (state) {
             state.service = true;
         },
+
+        set_popular (state, payload) {
+            state.populars = payload
+        },
     },
     actions: {
         async get_popular () {
-            const response = await fetch('/api/populars/get-all')
+            const response = await fetch('/api/populars/get-all');
             const payload = await response.json();
             this.commit('set_popular', payload);
         }

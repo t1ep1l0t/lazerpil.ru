@@ -50,8 +50,8 @@
                    v-for="item of popular"
                    :key="item._id"
               >
-<!--                    <img :src="'/popular_images/' + item.picture" alt="" class="popular__slide__img">-->
-                <img src="../assets/static-images/popular-1.png" alt="" class="popular__slide__img">
+                    <img :src="'http://localhost:5000/populars-photos/' + item.picture" alt="" class="popular__slide__img">
+<!--                <img src="../assets/static-images/popular-1.png" alt="" class="popular__slide__img">-->
                 <h3 class="popular__slide__title">{{ item.name }}</h3>
                 <span class="popular__slide__desc">{{ item.desc }}</span>
                 <span class="popular__slide__price">{{ item.price }} ₽</span>
@@ -143,44 +143,45 @@ export default {
           }
         ]
       },
-      popular: [
-        {
-          _id: 1,
-          name: 'Комплекс "Лайт"',
-          desc: '(бикини тотально, ноги полностью, пальчики на ногах)',
-          price: 3800,
-          picture: '../assets/static-images/popular-1.png'
-        },
-        {
-          _id: 2,
-          name: 'Комплекс "топ"',
-          desc: '(подмышечные впадины, бикини тотально, голени+колени)',
-          price: 3800,
-          picture: '../assets/static-images/popular-1.png'
-        },
-        {
-          _id: 3,
-          name: 'Комплекс "все тело"',
-          desc: '(подмышечные впадины, бикини тотальное, ноги полностью, пальчики на ногах, руки полностью,\n' +
-              'пальчики на руках)',
-          price: 3800,
-          picture: '../assets/static-images/popular-1.png'
-        },
-        {
-          _id: 4,
-          name: 'Комплекс "классика"',
-          desc: '(подмышечные впадины, бикини тотальное, ноги полностью, пальчики на ногах)',
-          price: 3800,
-          picture: '../assets/static-images/popular-1.png'
-        },
-        {
-          _id: 5,
-          name: 'Сертификат',
-          desc: 'Подарочный сертификат на посещение',
-          price: 3800,
-          picture: '../assets/static-images/popular-1.png'
-        }
-      ]
+      // popular: [
+      //   {
+      //     _id: 1,
+      //     name: 'Комплекс "Лайт"',
+      //     desc: '(бикини тотально, ноги полностью, пальчики на ногах)',
+      //     price: 3800,
+      //     picture: '../assets/static-images/popular-1.png'
+      //   },
+      //   {
+      //     _id: 2,
+      //     name: 'Комплекс "топ"',
+      //     desc: '(подмышечные впадины, бикини тотально, голени+колени)',
+      //     price: 3800,
+      //     picture: '../assets/static-images/popular-1.png'
+      //   },
+      //   {
+      //     _id: 3,
+      //     name: 'Комплекс "все тело"',
+      //     desc: '(подмышечные впадины, бикини тотальное, ноги полностью, пальчики на ногах, руки полностью,\n' +
+      //         'пальчики на руках)',
+      //     price: 3800,
+      //     picture: '../assets/static-images/popular-1.png'
+      //   },
+      //   {
+      //     _id: 4,
+      //     name: 'Комплекс "классика"',
+      //     desc: '(подмышечные впадины, бикини тотальное, ноги полностью, пальчики на ногах)',
+      //     price: 3800,
+      //     picture: '../assets/static-images/popular-1.png'
+      //   },
+      //   {
+      //     _id: 5,
+      //     name: 'Сертификат',
+      //     desc: 'Подарочный сертификат на посещение',
+      //     price: 3800,
+      //     picture: '../assets/static-images/popular-1.png'
+      //   }
+      // ],
+      popular: undefined
     }
   },
   methods: {
@@ -192,7 +193,7 @@ export default {
     },
   },
   mounted () {
-    //this.$store.dispatch('get_popular');
+    this.$store.dispatch('get_popular');
   }
 }
 </script>
