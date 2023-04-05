@@ -13,13 +13,18 @@
           <router-link class="top__button" to="/contact-us">записаться на <br> консультацию</router-link>
         </div>
         <div class="top__links">
-          <router-link to="/services" class="top__card top__card__woman">
+          <router-link to="/services"
+                       class="top__card top__card__woman"
+          >
             <h2 class="top__card__title">Эпиляция</h2>
-            <span class="top__card__name">Женская</span>
+            <span class="top__card__name" @click="$store.commit('switch_to_woman')">Женская</span>
           </router-link>
-          <router-link to="/services" class="top__card top__card__man">
+          <router-link to="/services"
+                       class="top__card top__card__man"
+                       @click.native="$store.commit('switch_to_man')"
+          >
             <h2 class="top__card__title">Эпиляция</h2>
-            <span class="top__card__name">Мужская</span>
+            <span class="top__card__name" @click="$store.commit('switch_to_man')">Мужская</span>
           </router-link>
         </div>
       </div>

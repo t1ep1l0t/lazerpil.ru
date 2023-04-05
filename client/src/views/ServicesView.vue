@@ -75,6 +75,10 @@ export default {
       flex-direction: column;
       align-items: start;
       gap: 60px;
+
+      @media (max-width: 550px) {
+        gap: 40px;
+      }
     }
     &__head {
       width: 100%;
@@ -129,6 +133,9 @@ export default {
           color: #FFFFFF!important;
         }
       }
+    }
+    &__content {
+      width: 100%;
     }
   }
 </style>
