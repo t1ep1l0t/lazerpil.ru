@@ -8,9 +8,7 @@
             :zoom="10"
             ymap-class="map__box"
             :controls="[]"
-            :behaviors="[]"
-            :scroll-zoom="false"
-            :map-events="[]"
+            :scroll-zoom="true"
         >
           <ymap-marker
               :coords="[55.815934, 37.724068]"
