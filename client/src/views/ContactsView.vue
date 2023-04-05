@@ -77,7 +77,7 @@ export default {
 
 .contacts {
   width: 100%;
-  margin-top: 60px;
+  padding-top: 60px;
 
   &__inner {
     display: flex;
