@@ -301,12 +301,19 @@ export default {
   width: 100%;
   margin-top: 120px;
 
+  @media (max-width: 550px) {
+    margin-top: 60px;
+  }
+
   &__inner {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: start;
     gap: 60px;
+    @media (max-width: 550px) {
+      gap: 40px;
+    }
   }
   &__head  {
     width: fit-content;
@@ -370,6 +377,9 @@ export default {
   }
   &__item {
     width: 100%;
+    background-color: #FAFAFA!important;
+    padding: 0 20px!important;
+    border-radius: 20px!important;
   }
   &__name {
     font-weight: 700;

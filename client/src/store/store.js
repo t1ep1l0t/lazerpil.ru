@@ -6,6 +6,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         menu: false,
+        service: false,
         popular: undefined
     },
     mutations: {
@@ -14,7 +15,13 @@ const store = new Vuex.Store({
         },
         set_popular (state, payload) {
             state.popular = payload
-        }
+        },
+        switch_to_woman (state) {
+            state.service = false;
+        },
+        switch_to_man (state) {
+            state.service = true;
+        },
     },
     actions: {
         async get_popular () {

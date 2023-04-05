@@ -135,12 +135,20 @@ export default {
   width: 100%;
   margin-top: 120px;
 
+  @media (max-width: 550px) {
+    margin-top: 60px;
+  }
+
   &__inner {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: start;
     gap: 60px;
+
+    @media (max-width: 550px) {
+      gap: 40px;
+    }
   }
   &__head  {
     width: fit-content;
@@ -175,6 +183,8 @@ export default {
     gap: 10px;
     position: relative;
     padding-bottom: 30px;
+    background-color: #FAFAFA;
+    border-radius: 0 0 30px 30px;
   }
   &__arrow {
     position: absolute;
@@ -233,11 +243,13 @@ export default {
     font-weight: 600;
     font-size: 20px;
     line-height: 28px;
+    padding-left: 20px;
   }
   &__address {
     font-weight: 700;
     font-size: 16px;
     line-height: 160%;
+    padding-left: 20px;
   }
 }
 </style>

@@ -213,7 +213,8 @@ export default {
     background-size: contain;
 
     @media(max-width: 640px) {
-      background-image: none;
+      background-position: 100% 100%;
+      height: 716px;
     }
   }
   &__title {
@@ -358,12 +359,20 @@ export default {
   width: 100%;
   margin-top: 120px;
 
+  @media (max-width: 550px) {
+    margin-top: 60px;
+  }
+
   &__inner {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: start;
     gap: 60px;
+
+    @media (max-width: 550px) {
+      gap: 40px;
+    }
   }
   &__head  {
     width: fit-content;
@@ -463,12 +472,20 @@ export default {
   width: 100%;
   margin-top: 120px;
 
+  @media (max-width: 550px) {
+    margin-top: 60px;
+  }
+
   &__inner {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: start;
     gap: 60px;
+
+    @media (max-width: 550px) {
+      gap: 40px;
+    }
   }
   &__head  {
     width: fit-content;
