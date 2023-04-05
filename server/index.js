@@ -6,11 +6,13 @@ import cors from 'cors';
 import * as path from "path";
 import router from "./routers/index.js";
 import fileUpload from 'express-fileupload';
+import history from 'connect-history-api-fallback';
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(fileUpload({}));
+app.use(history({index: '/index.html'}));
 app.use('/', express.static(path.resolve('../client/dist')));
 app.use('/api', router);
 
