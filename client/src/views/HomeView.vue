@@ -31,9 +31,15 @@
             <h2 class="popular__title">ПОПУЛЯРНЫЕ УСЛУГИ</h2>
           </div>
           <div class="popular__content">
+            <button class="popular__arrow popular__arrow__prev" @click="popular_slider_prev">
+              <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 6L9 12L15 18" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
             <VueSlickCarousel class="popular__slider"
                               v-if="popular"
-                              v-bind="slider_settings"
+                              v-bind="popular_slider_settings"
+                              ref="popular_slider"
             >
               <div class="popular__slide"
                    v-for="item of popular"
@@ -46,6 +52,11 @@
                 <span class="popular__slide__price">{{ item.price }} ₽</span>
               </div>
             </VueSlickCarousel>
+            <button class="popular__arrow popular__arrow__next" @click="popular_slider_next">
+              <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 18L15 12L9 6" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -150,7 +161,27 @@
                  v-for="(loaction, index) of locations"
                  :key="index"
             >
-              <VueSlickCarousel class="location__slider">
+              <button class="location__arrow location__arrow__prev"
+                      @click="loaction_slider1_prev"
+                      v-if="index === 0"
+              >
+                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 6L9 12L15 18" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <button class="location__arrow location__arrow__prev"
+                      @click="loaction_slider2_prev"
+                      v-if="index === 1"
+              >
+                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 6L9 12L15 18" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <VueSlickCarousel class="location__slider"
+                                :ref="'location_slider_' + index"
+                                v-if="loaction"
+                                v-bind="locations_slider_settings"
+              >
                 <div class="location__slide"
                      v-for="(img, index) of loaction.photos"
                      :key="index"
@@ -158,6 +189,22 @@
                   <img class="img" :src="img" alt="">
                 </div>
               </VueSlickCarousel>
+              <button class="location__arrow location__arrow__next"
+                      @click="loaction_slider1_next"
+                      v-if="index === 0"
+              >
+                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 18L15 12L9 6" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <button class="location__arrow location__arrow__next"
+                      @click="loaction_slider2_next"
+                      v-if="index === 1"
+              >
+                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 18L15 12L9 6" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
               <span class="location__metro"
                     :style="{color: loaction.color}"
               >
@@ -186,8 +233,8 @@ export default {
   },
   data () {
     return {
-      slider_settings: {
-        arrows: true,
+      popular_slider_settings: {
+        arrows: false,
         autoplay: true,
         autoplaySpeed: 6000,
         slidesToScroll: 1,
@@ -488,6 +535,15 @@ export default {
           ]
         },
       ],
+      locations_slider_settings: {
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 6000,
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        swipeToSlide: true,
+        infinite: true
+      },
       locations: [
         {
           metro: 'Бульвар Рокассовского',
@@ -508,6 +564,26 @@ export default {
           ]
         },
       ]
+    }
+  },
+  methods: {
+    popular_slider_prev () {
+      this.$refs.popular_slider.prev()
+    },
+    popular_slider_next () {
+      this.$refs.popular_slider.next()
+    },
+    loaction_slider1_prev () {
+      this.$refs.location_slider_0[0].prev()
+    },
+    loaction_slider1_next () {
+      this.$refs.location_slider_0[0].next();
+    },
+    loaction_slider2_prev () {
+      this.$refs.location_slider_1[0].prev()
+    },
+    loaction_slider2_next () {
+      this.$refs.location_slider_1[0].next();
     }
   },
   mounted () {
@@ -706,9 +782,42 @@ export default {
   }
   &__content {
     width: 100%;
+    position: relative;
   }
   &__slider {
     width: 100%;
+  }
+  &__arrow {
+    position: absolute;
+    top: 119px;
+    background: #FFFFFF;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+
+    .icon {
+      transition: all .3s ease;
+    }
+    &__prev {
+      left: -18px;
+
+      &:hover {
+        .icon {
+          stroke: $rose_light;
+        }
+      }
+    }
+    &__next {
+      right: -18px;
+
+      &:hover {
+        .icon {
+          stroke: $rose_light;
+        }
+      }
+    }
   }
   &__slide {
     height: 460px;
@@ -1110,6 +1219,39 @@ export default {
     flex-direction: column;
     align-items: start;
     gap: 10px;
+    position: relative;
+  }
+  &__arrow {
+    position: absolute;
+    top: 35%;
+    background: #FFFFFF;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+
+    .icon {
+      transition: all .3s ease;
+    }
+    &__prev {
+      left: 20px;
+
+      &:hover {
+        .icon {
+          stroke: $rose_light;
+        }
+      }
+    }
+    &__next {
+      right: 20px;
+
+      &:hover {
+        .icon {
+          stroke: $rose_light;
+        }
+      }
+    }
   }
   &__slider {
     width: 100%;
