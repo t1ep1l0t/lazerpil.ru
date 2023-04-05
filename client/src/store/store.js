@@ -27,10 +27,8 @@ const store = new Vuex.Store({
         async get_popular () {
             const response = await fetch('/api/populars/get-all')
             const payload = await response.json();
-
             this.commit('set_popular', payload);
         }
-
     }
 })
 

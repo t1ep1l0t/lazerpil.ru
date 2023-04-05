@@ -84,6 +84,10 @@ export default {
     flex-direction: column;
     align-items: center;
     gap: 60px;
+
+    @media (max-width: 550px) {
+      gap: 40px;
+    }
   }
   &__title {
     font-weight: 700;
