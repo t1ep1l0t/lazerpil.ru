@@ -1,8 +1,7 @@
 <template>
 <div id="man_service">
   <section class="services">
-    <div class="container">
-      <div class="services__inner">
+    <div class="services__inner">
         <div class="services__head">
           <h2 class="services__title">
             Услуги
@@ -32,7 +31,6 @@
           </div>
         </div>
       </div>
-    </div>
   </section>
 </div>
 </template>
@@ -213,6 +211,7 @@ export default {
 
 .services {
   width: 100%;
+
   &__inner {
     width: 100%;
     display: flex;
@@ -236,12 +235,24 @@ export default {
     display: flex;
     align-items: start;
     gap: 20px;
+
+    @media (max-width: 880px) {
+      flex-direction: column;
+    }
   }
   &__list {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: start;
+
+    @media (max-width: 880px) {
+      flex-direction: row;
+      column-gap: 20px;
+      row-gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
   &__item {
     width: 100%;
@@ -257,9 +268,30 @@ export default {
     &:hover {
       background-color: #FAFAFA;
     }
-
     &__img {
       display: none;
+
+      @media (max-width: 880px) {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+      }
+    }
+
+    @media (max-width: 880px) {
+      width: 100%;
+      max-width: 160px;
+      flex-direction: column;
+      align-items: start;
+      gap: 16px;
+      padding: 0;
+    }
+    @media (max-width: 380px) {
+      max-width: 140px;
+    }
+    @media (max-width: 340px) {
+      max-width: 130px;
     }
   }
   &__name, &__price {
@@ -267,6 +299,9 @@ export default {
     font-size: 16px;
     line-height: 130%;
     text-transform: uppercase;
+    @media (max-width: 550px) {
+      font-size: 14px;
+    }
   }
   &__preview {
     width: 100%;
@@ -279,6 +314,10 @@ export default {
     width: 100%;
     height: auto;
     border-radius: 30px;
+
+    @media (max-width: 880px) {
+      display: none;
+    }
   }
   &__active {
     width: 100%;
@@ -319,6 +358,13 @@ export default {
     &:hover {
       background-color: $blue;
       color: #FFFFFF;
+    }
+
+    @media (max-width: 550px) {
+      width: 120px;
+      height: 120px;
+      font-size: 10px;
+      line-height: 16px;
     }
   }
 }

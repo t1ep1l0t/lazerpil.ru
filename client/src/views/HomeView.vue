@@ -90,7 +90,7 @@
     </section>
     <FaqComponent />
     <GalleryComponent />
-    <LoactionsComponent />
+    <LocationsComponent />
     <MapComponent />
   </div>
 </template>
@@ -100,7 +100,7 @@ import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 import MapComponent from "@/components/MapComponent.vue";
-import LoactionsComponent from "@/components/LoactionsComponent.vue";
+import LocationsComponent from "@/components/LocationsComponent.vue";
 import GalleryComponent from "@/components/GalleryComponent.vue";
 import FaqComponent from "@/components/FaqComponent.vue";
 export default {
@@ -108,7 +108,7 @@ export default {
   components: {
     FaqComponent,
     GalleryComponent,
-    LoactionsComponent,
+    LocationsComponent,
     MapComponent,
     VueSlickCarousel
   },
@@ -269,6 +269,7 @@ export default {
     line-height: 20px;
     color: $rose_light;
     transition: all .3s ease;
+    text-transform: uppercase;
 
     &:hover {
       color: #FFFFFF;
@@ -280,8 +281,8 @@ export default {
       width: 120px;
       height: 120px;
       left: calc(50% - 60px);
-      font-size: 12px;
-      line-height: 18px;
+      font-size: 10px;
+      line-height: 16px;
     }
   }
   &__links {
@@ -308,6 +309,11 @@ export default {
     @media(max-width: 768px) {
       gap: 30%;
       height: 226px;
+    }
+
+    @media(max-width: 550px) {
+      gap: 20%;
+      height: 150px;
     }
 
     &__woman {

@@ -36,18 +36,18 @@
         </div>
       </div>
     </section>
-    <LoactionsComponent />
+    <LocationsComponent />
     <MapComponent />
   </div>
 </template>
 
 <script>
-import LoactionsComponent from "@/components/LoactionsComponent.vue";
+import LocationsComponent from "@/components/LocationsComponent.vue";
 import MapComponent from "@/components/MapComponent.vue";
 
 export default {
   name: "ContactsView",
-  components: {MapComponent, LoactionsComponent},
+  components: {MapComponent, LocationsComponent},
   data () {
     return {
       contacts: [

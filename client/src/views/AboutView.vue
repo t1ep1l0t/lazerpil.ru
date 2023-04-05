@@ -3,7 +3,7 @@
     <h1>about</h1>
     <FaqComponent />
     <GalleryComponent />
-    <LoactionsComponent />
+    <LocationsComponent />
     <MapComponent />
   </div>
 </template>
@@ -11,12 +11,12 @@
 <script>
 import FaqComponent from "@/components/FaqComponent.vue";
 import GalleryComponent from "@/components/GalleryComponent.vue";
-import LoactionsComponent from "@/components/LoactionsComponent.vue";
+import LocationsComponent from "@/components/LocationsComponent.vue";
 import MapComponent from "@/components/MapComponent.vue";
 
 export default {
   name: "AboutView",
-  components: {MapComponent, LoactionsComponent, GalleryComponent, FaqComponent}
+  components: {MapComponent, LocationsComponent, GalleryComponent, FaqComponent}
 }
 </script>
 
