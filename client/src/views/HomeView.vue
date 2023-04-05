@@ -219,6 +219,33 @@
         </div>
       </div>
     </section>
+    <section class="map">
+      <div class="container">
+        <div class="map__inner">
+          <yandex-map
+              :settings="ya_maps_settings"
+              :coords="[55.752285, 37.618684]"
+              :zoom="10"
+              ymap-class="map__box"
+          >
+            <ymap-marker
+                :coords="[55.815934, 37.724068]"
+                marker-id="123"
+                hint-content="some hint"
+                :balloon="{header: 'header', body: 'body', footer: 'footer'}"
+                :icon="markerIcon"
+            />
+            <ymap-marker
+                :coords="[55.808022, 37.635916]"
+                marker-id="123"
+                hint-content="some hint"
+                :balloon="{header: 'header', body: 'body', footer: 'footer'}"
+                :icon="markerIcon"
+            />
+          </yandex-map>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -226,10 +253,13 @@
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+import {yandexMap, ymapMarker } from 'vue-yandex-maps';
 export default {
   name: "HomeView",
   components: {
-    VueSlickCarousel
+    VueSlickCarousel,
+    yandexMap,
+    ymapMarker
   },
   data () {
     return {
@@ -563,7 +593,27 @@ export default {
             'https://i.ibb.co/DgmCpy6/location1.png'
           ]
         },
-      ]
+      ],
+      ya_maps_settings: {
+        apiKey: '77dd6bb7-fc4c-47a7-923b-cd8636995f55',
+        lang: 'ru_RU',
+        coordorder: 'latlong',
+        enterprise: false,
+        version: '2.1'
+      },
+      markerIcon: {
+        layout: 'default#imageWithContent',
+        imageHref: 'https://image.flaticon.com/icons/png/512/33/33447.png',
+        imageSize: [38, 38],
+        imageOffset: [0, 0],
+        content: 'ML',
+        contentOffset: [0, 15],
+        contentLayout: '<div style="width: 38px;\n' +
+            '    height: 38px;\n' +
+            '    border-radius: 50%;\n' +
+            '    color: #FFFFFF;\n' +
+            '    background-color: #E73D8C; display: flex; align-items: center; justify-content:center;font-family: \'Comfortaa\', cursive;">$[properties.iconContent]</div>'
+      }
     }
   },
   methods: {
@@ -1282,5 +1332,30 @@ export default {
     line-height: 160%;
   }
 }
+.map {
+  width: 100%;
+  margin-top: 120px;
 
+  &__inner {
+    height: 600px;
+
+    .ymap-container {
+      height: 600px;
+    }
+  }
+  &__marker {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    color: #FFFFFF;
+    background-color: $rose_light;
+  }
+}
+
+</style>
+
+<style>
+.map__box {
+  height: 600px;
+}
 </style>
