@@ -199,6 +199,7 @@ export default {
         }
       });
       console.log(response)
+      console.log('JSON' + await response.json())
       const payload = await response.json();
       console.log(payload)
       this.$store.commit('set_popular', payload);
