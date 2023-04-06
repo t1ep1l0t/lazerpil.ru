@@ -80,7 +80,10 @@ class PopularController {
         try {
             const populars = await PopularModel.find();
 
-            res.status(200).json(populars);
+            res.status(200).json({
+                message: 'Success',
+                populars: populars
+            });
 
         } catch (e) {
             console.log(e);
