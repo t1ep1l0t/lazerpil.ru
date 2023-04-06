@@ -1,5 +1,5 @@
 <template>
-  <section class="location">
+  <section class="location" v-if="$store.state.locations">
     <div class="container">
       <div class="location__inner">
         <div class="location__head">
@@ -7,7 +7,7 @@
         </div>
         <div class="location__content">
           <div class="location__item"
-               v-for="(loaction, index) of locations"
+               v-for="(location, index) of $store.state.locations"
                :key="index"
           >
             <button class="location__arrow location__arrow__prev"
@@ -28,14 +28,13 @@
             </button>
             <VueSlickCarousel class="location__slider"
                               :ref="'location_slider_' + index"
-                              v-if="loaction"
                               v-bind="locations_slider_settings"
             >
               <div class="location__slide"
-                   v-for="(img, index) of loaction.photos"
+                   v-for="(img, index) of location.interior"
                    :key="index"
               >
-                <img class="img" :src="img" alt="">
+                <img class="img" :src="'http://localhost:5000/pictures/interior/' + img" alt="">
               </div>
             </VueSlickCarousel>
             <button class="location__arrow location__arrow__next"
@@ -55,14 +54,14 @@
               </svg>
             </button>
             <span class="location__metro"
-                  :style="{color: loaction.color}"
+                  :style="{color: location.color}"
             >
                 <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M32.592 20.6473L24.416 0L17.5 12.0698L10.612 0L2.408 20.6473H0V23.7765H12.376V20.6473H10.528L12.32 15.5064L17.5 24L22.68 15.5064L24.472 20.6473H22.624V23.7765H35V20.6473H32.592Z" :fill="loaction.color"/>
+                  <path d="M32.592 20.6473L24.416 0L17.5 12.0698L10.612 0L2.408 20.6473H0V23.7765H12.376V20.6473H10.528L12.32 15.5064L17.5 24L22.68 15.5064L24.472 20.6473H22.624V23.7765H35V20.6473H32.592Z" :fill="location.color"/>
                 </svg>
-                {{ loaction.metro }}
+                {{ location.metro }}
               </span>
-            <span class="location__address">{{ loaction.address }}</span>
+            <span class="location__address">{{ location.address }}</span>
           </div>
         </div>
       </div>
@@ -90,26 +89,6 @@ export default {
         swipeToSlide: true,
         infinite: true
       },
-      locations: [
-        {
-          metro: 'Бульвар Рокассовского',
-          address: 'улица Бойцовая, дом 27',
-          color: '#EC232B',
-          photos: [
-            'https://i.ibb.co/DgmCpy6/location1.png',
-            'https://i.ibb.co/qCWJGP2/location2.png'
-          ]
-        },
-        {
-          metro: 'Алексеевская',
-          address: 'улица Проспект Мира, 95с1',
-          color: '#F58220',
-          photos: [
-            'https://i.ibb.co/qCWJGP2/location2.png',
-            'https://i.ibb.co/DgmCpy6/location1.png'
-          ]
-        },
-      ]
     }
   },
   methods: {
@@ -125,6 +104,9 @@ export default {
     loaction_slider2_next () {
       this.$refs.location_slider_1[0].next();
     }
+  },
+  mounted() {
+    this.$store.dispatch('get_locations');
   }
 }
 </script>

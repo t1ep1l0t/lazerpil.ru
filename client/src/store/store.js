@@ -9,6 +9,7 @@ const store = new Vuex.Store({
         service: false,
         populars: undefined,
         faqs: undefined,
+        locations: undefined
     },
     mutations: {
         set_menu (state) {
@@ -27,6 +28,9 @@ const store = new Vuex.Store({
         set_faqs (state, payload) {
             state.faqs = payload
         },
+        set_locations(state, payload) {
+            state.locations = payload;
+        }
     },
     actions: {
         async get_popular () {
@@ -38,6 +42,11 @@ const store = new Vuex.Store({
             const response = await fetch('http://localhost:5000/api/faqs/get');
             const payload = await response.json();
             this.commit('set_faqs', payload);
+        },
+        async get_locations () {
+            const response = await fetch('http://localhost:5000/api/locations/get');
+            const payload = await response.json();
+            this.commit('set_locations', payload);
         },
     }
 })

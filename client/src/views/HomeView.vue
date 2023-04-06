@@ -303,6 +303,7 @@ export default {
     }
     &__man {
       background-color: #FAFAFA;
+      border: 2px solid $blue;
 
       &:hover {
         background-color: #F0F0F0;
