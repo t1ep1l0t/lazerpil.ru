@@ -80,6 +80,10 @@ class PopularController {
         try {
             const populars = await PopularModel.find();
 
+            res.set({
+                'Content-Type' : 'application/json; charset=utf-8'
+            })
+
             res.status(200).json({
                 message: 'Success',
                 populars: populars
