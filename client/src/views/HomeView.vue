@@ -29,7 +29,7 @@
         </div>
       </div>
     </section>
-    <section class="popular">
+    <section class="popular" v-if="$store.state.populars">
       <div class="container">
         <div class="popular__inner">
           <div class="popular__head">
@@ -42,7 +42,6 @@
               </svg>
             </button>
             <VueSlickCarousel class="popular__slider"
-                              v-if="$store.state.populars"
                               v-bind="popular_slider_settings"
                               ref="popular_slider"
             >
@@ -50,8 +49,7 @@
                    v-for="item of $store.state.populars"
                    :key="item._id"
               >
-                    <img :src="'http://localhost:5000/pictures/popular/' + item.picture" alt="" class="popular__slide__img">
-<!--                <img src="../assets/static-images/popular-1.png" alt="" class="popular__slide__img">-->
+                <img :src="'http://localhost:5000/pictures/popular/' + item.picture" alt="" class="popular__slide__img">
                 <h3 class="popular__slide__title">{{ item.name }}</h3>
                 <span class="popular__slide__desc">{{ item.desc }}</span>
                 <span class="popular__slide__price" v-if="item.price !== 'null'">{{ item.price + ' ₽' }}</span>

@@ -83,10 +83,7 @@ class PopularController {
             res.set({
                 'Content-Type' : 'application/json; charset=utf-8'
             })
-            res.status(200).json({
-                message: 'Success',
-                populars: populars
-            });
+            res.status(200).json(populars);
 
         } catch (e) {
             console.log(e);
@@ -153,6 +150,5 @@ class PopularController {
             });
         }
     }
-
 }
 export default new PopularController;
