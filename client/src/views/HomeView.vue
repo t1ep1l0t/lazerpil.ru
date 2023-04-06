@@ -191,24 +191,9 @@ export default {
     popular_slider_next () {
       this.$refs.popular_slider.next()
     },
-    async get_popular () {
-      const response = await fetch('/api/populars/get-all', {
-        method: 'GET',
-        headers: {
-          "Content-Type": "application/json; charset=utf-8"
-        }
-      });
-      console.log(response)
-      const payload = await response.json();
-      console.log(payload)
-      this.$store.commit('set_popular', payload);
-      console.log(this.$store.state.populars)
-    }
   },
   mounted () {
-    setTimeout(() => {
-      this.get_popular()
-    },3000)
+    this.$store.dispatch('get_popular');
   }
 }
 </script>
