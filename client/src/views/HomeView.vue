@@ -42,19 +42,19 @@
               </svg>
             </button>
             <VueSlickCarousel class="popular__slider"
-                              v-if="popular"
+                              v-if="$store.state.populars"
                               v-bind="popular_slider_settings"
                               ref="popular_slider"
             >
               <div class="popular__slide"
-                   v-for="item of popular"
+                   v-for="item of $store.state.populars"
                    :key="item._id"
               >
-                    <img :src="'http://localhost:5000/populars-photos/' + item.picture" alt="" class="popular__slide__img">
+                    <img :src="'http://localhost:5000/pictures/popular/' + item.picture" alt="" class="popular__slide__img">
 <!--                <img src="../assets/static-images/popular-1.png" alt="" class="popular__slide__img">-->
                 <h3 class="popular__slide__title">{{ item.name }}</h3>
                 <span class="popular__slide__desc">{{ item.desc }}</span>
-                <span class="popular__slide__price">{{ item.price }} ₽</span>
+                <span class="popular__slide__price" v-if="item.price !== 'null'">{{ item.price + ' ₽' }}</span>
               </div>
             </VueSlickCarousel>
             <button class="popular__arrow popular__arrow__next" @click="popular_slider_next">
@@ -143,45 +143,6 @@ export default {
           }
         ]
       },
-      // popular: [
-      //   {
-      //     _id: 1,
-      //     name: 'Комплекс "Лайт"',
-      //     desc: '(бикини тотально, ноги полностью, пальчики на ногах)',
-      //     price: 3800,
-      //     picture: '../assets/static-images/popular-1.png'
-      //   },
-      //   {
-      //     _id: 2,
-      //     name: 'Комплекс "топ"',
-      //     desc: '(подмышечные впадины, бикини тотально, голени+колени)',
-      //     price: 3800,
-      //     picture: '../assets/static-images/popular-1.png'
-      //   },
-      //   {
-      //     _id: 3,
-      //     name: 'Комплекс "все тело"',
-      //     desc: '(подмышечные впадины, бикини тотальное, ноги полностью, пальчики на ногах, руки полностью,\n' +
-      //         'пальчики на руках)',
-      //     price: 3800,
-      //     picture: '../assets/static-images/popular-1.png'
-      //   },
-      //   {
-      //     _id: 4,
-      //     name: 'Комплекс "классика"',
-      //     desc: '(подмышечные впадины, бикини тотальное, ноги полностью, пальчики на ногах)',
-      //     price: 3800,
-      //     picture: '../assets/static-images/popular-1.png'
-      //   },
-      //   {
-      //     _id: 5,
-      //     name: 'Сертификат',
-      //     desc: 'Подарочный сертификат на посещение',
-      //     price: 3800,
-      //     picture: '../assets/static-images/popular-1.png'
-      //   }
-      // ],
-      popular: undefined
     }
   },
   methods: {
@@ -460,8 +421,9 @@ export default {
       width: 100%;
       height: auto;
       margin-bottom: 14px;
+      border-radius: 30px;
     }
-    &__name {
+    &__title {
       font-weight: 700;
       font-size: 18px;
       line-height: 130%;
