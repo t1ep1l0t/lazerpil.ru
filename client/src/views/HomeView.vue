@@ -192,7 +192,12 @@ export default {
       this.$refs.popular_slider.next()
     },
     async get_popular () {
-      const response = await fetch('/api/populars/get-all');
+      const response = await fetch('/api/populars/get-all', {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      });
       console.log(response)
       const payload = await response.json();
       console.log(payload)
