@@ -199,7 +199,6 @@ export default {
         }
       });
       console.log(response)
-      console.log('JSON' + await response.json())
       const payload = await response.json();
       console.log(payload)
       this.$store.commit('set_popular', payload);
@@ -207,7 +206,9 @@ export default {
     }
   },
   mounted () {
-    this.get_popular()
+    setTimeout(() => {
+      this.get_popular()
+    },3000)
   }
 }
 </script>
