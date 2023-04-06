@@ -12,9 +12,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(fileUpload({}));
+app.use('/api', router);
 app.use('/', express.static(path.resolve('../client/dist')));
 app.use('/pictures', express.static(path.resolve('../client/pictures')));
-app.use('/api', router);
 // app.use(history({index: '/index.html'}));
 
 
