@@ -1,5 +1,5 @@
 <template>
-  <section class="map">
+  <section class="map" v-if="$store.state.locations">
     <div class="container">
       <div class="map__inner">
         <yandex-map
@@ -11,23 +11,12 @@
             :scroll-zoom="true"
         >
           <ymap-marker
-              :coords="[55.815934, 37.724068]"
-              marker-id="123"
-              hint-content="улица Бойцовая, дом 27"
-              :balloon="{
-                  header: 'Бульвар Рокассовского',
-                  body: 'улица Бойцовая, дом 27',
-                }"
-              :icon="markerIcon"
-          />
-          <ymap-marker
-              :coords="[55.808022, 37.635916]"
-              marker-id="123"
-              hint-content="улица проспект Мира, 95с1"
-              :balloon="{
-                  header: 'Метро Алексеевская',
-                  body: 'улица проспект Мира, 95с1',
-                }"
+              v-for="marker of $store.state.locations"
+              :key="marker._id"
+              :coords="marker.coords"
+              :marker-id="marker._id"
+              :hint-content="marker.address"
+              :balloon="{header: marker.metro, body: marker.address}"
               :icon="markerIcon"
           />
         </yandex-map>
@@ -59,10 +48,11 @@ export default {
         imageHref: 'https://i.ibb.co/866QmRN/icon.png',
         imageSize: [38, 38],
         imageOffset: [0, 0],
-      }
-
-
+      },
     }
+  },
+  mounted () {
+    this.$store.dispatch('get_locations');
   }
 }
 </script>

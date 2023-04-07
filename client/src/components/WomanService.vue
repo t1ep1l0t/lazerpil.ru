@@ -1,6 +1,6 @@
 <template>
   <div id="woman_service">
-    <section class="complex">
+    <section class="complex" v-if="$store.state.populars">
       <div class="complex__inner">
           <div class="complex__head">
             <h2 class="complex__title">
@@ -14,19 +14,17 @@
               </svg>
             </button>
             <VueSlickCarousel class="complex__slider"
-                              v-if="complex"
                               v-bind="complex_slider_settings"
                               ref="complex_slider"
             >
               <div class="complex__slide"
-                   v-for="item of complex"
+                   v-for="item of $store.state.populars"
                    :key="item._id"
               >
-                <!--                    <img :src="'/popular_images/' + item.picture" alt="" class="complex__slide__img">-->
-                <img src="../assets/static-images/popular-1.png" alt="" class="complex__slide__img">
+                <img :src="'http://localhost:5000/pictures/popular/' + item.picture" alt="" class="complex__slide__img">
                 <h3 class="complex__slide__title">{{ item.name }}</h3>
                 <span class="complex__slide__desc">{{ item.desc }}</span>
-                <span class="complex__slide__price">{{ item.price }} ₽</span>
+                <span class="complex__slide__price" v-if="item.price !== 'null'">{{ item.price + ' ₽' }} </span>
               </div>
             </VueSlickCarousel>
             <button class="complex__arrow complex__arrow__next" @click="complex_slider_next">
@@ -113,37 +111,6 @@ export default {
           }
         ]
       },
-      complex: [
-        {
-          _id: 1,
-          name: 'Комплекс "Лайт"',
-          desc: '(бикини тотально, ноги полностью, пальчики на ногах)',
-          price: 3800,
-          picture: '../assets/static-images/popular-1.png'
-        },
-        {
-          _id: 2,
-          name: 'Комплекс "топ"',
-          desc: '(подмышечные впадины, бикини тотально, голени+колени)',
-          price: 3800,
-          picture: '../assets/static-images/popular-1.png'
-        },
-        {
-          _id: 3,
-          name: 'Комплекс "все тело"',
-          desc: '(подмышечные впадины, бикини тотальное, ноги полностью, пальчики на ногах, руки полностью,\n' +
-              'пальчики на руках)',
-          price: 3800,
-          picture: '../assets/static-images/popular-1.png'
-        },
-        {
-          _id: 4,
-          name: 'Комплекс "классика"',
-          desc: '(подмышечные впадины, бикини тотальное, ноги полностью, пальчики на ногах)',
-          price: 3800,
-          picture: '../assets/static-images/popular-1.png'
-        },
-      ],
       services: [
         {
           name: 'носовые пазухи',
@@ -312,6 +279,7 @@ export default {
   },
   mounted() {
     this.get_item_active();
+    this.$store.dispatch('get_popular');
   }
 }
 </script>
@@ -403,8 +371,9 @@ export default {
       width: 100%;
       height: auto;
       margin-bottom: 14px;
+      border-radius: 30px;
     }
-    &__name {
+    &__title {
       font-weight: 700;
       font-size: 18px;
       line-height: 130%;

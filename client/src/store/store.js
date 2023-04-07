@@ -9,7 +9,8 @@ const store = new Vuex.Store({
         service: false,
         populars: undefined,
         faqs: undefined,
-        locations: undefined
+        locations: undefined,
+        reviews: undefined
     },
     mutations: {
         set_menu (state) {
@@ -30,6 +31,9 @@ const store = new Vuex.Store({
         },
         set_locations(state, payload) {
             state.locations = payload;
+        },
+        set_reviews(state, payload) {
+            state.reviews = payload;
         }
     },
     actions: {
@@ -47,6 +51,11 @@ const store = new Vuex.Store({
             const response = await fetch('http://localhost:5000/api/locations/get');
             const payload = await response.json();
             this.commit('set_locations', payload);
+        },
+        async get_reviews () {
+            const response = await fetch('http://localhost:5000/api/reviews/get');
+            const payload = await response.json();
+            this.commit('set_reviews', payload);
         },
     }
 })
