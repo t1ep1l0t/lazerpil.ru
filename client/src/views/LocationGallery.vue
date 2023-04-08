@@ -130,7 +130,7 @@ export default {
   methods: {
     async get_location_from_id () {
       const id = window.location.href.split('/')[4];
-      const response = await fetch(`http://localhost:5000/api/locations/get/${id}`);
+      const response = await fetch(`/api/locations/get/${id}`);
       this.location = await response.json();
     }
   },

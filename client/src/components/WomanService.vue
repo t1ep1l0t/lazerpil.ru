@@ -21,7 +21,7 @@
                    v-for="item of $store.state.populars"
                    :key="item._id"
               >
-                <img :src="'http://localhost:5000/pictures/popular/' + item.picture" alt="" class="complex__slide__img">
+                <img :src="'/pictures/popular/' + item.picture" alt="" class="complex__slide__img">
                 <h3 class="complex__slide__title">{{ item.name }}</h3>
                 <span class="complex__slide__desc">{{ item.desc }}</span>
                 <span class="complex__slide__price" v-if="item.price !== 'null'">{{ item.price + ' ₽' }} </span>
