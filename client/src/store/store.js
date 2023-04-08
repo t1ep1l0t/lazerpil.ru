@@ -7,6 +7,8 @@ const store = new Vuex.Store({
     state: {
         menu: false,
         service: false,
+        location_modal: false,
+
         populars: undefined,
         faqs: undefined,
         locations: undefined,
@@ -21,6 +23,9 @@ const store = new Vuex.Store({
         },
         switch_to_man (state) {
             state.service = true;
+        },
+        set_location_modal(state) {
+            state.location_modal = !state.location_modal;
         },
 
         set_popular (state, payload) {

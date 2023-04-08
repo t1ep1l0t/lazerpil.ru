@@ -2,6 +2,7 @@
   <div id="app">
     <HeaderComponent />
     <MobilMenu />
+    <AddReviewModal />
     <div id="page"><router-view /></div>
     <FooterComponent />
   </div>
@@ -12,10 +13,12 @@
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import MobilMenu from "@/components/MobilMenu.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
+import AddReviewModal from "@/components/AddReviewModal.vue";
 
 export default {
   name: 'App',
   components: {
+    AddReviewModal,
     FooterComponent,
     MobilMenu,
     HeaderComponent

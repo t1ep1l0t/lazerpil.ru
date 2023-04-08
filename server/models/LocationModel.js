@@ -5,6 +5,7 @@ const LocationModel = new mongoose.Schema({
     address: {type: String, require: true, unique: true},
     color: {type: String, require: true, unique: false},
     coords: [{type: String, require: true, unique: true}],
+    path: {type: String, require: true, unique: false},
 
     entrance: [{type: String, require: false, unique: false }],
     equip: [{type: String, require: false, unique: false }],

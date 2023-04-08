@@ -6,6 +6,7 @@ import ServicesView from "@/views/ServicesView.vue";
 import ReviewsView from "@/views/ReviewsView.vue";
 import ContactsView from "@/views/ContactsView.vue";
 import GalleryView from "@/views/GalleryView.vue";
+import LocationGallery from "@/views/LocationGallery.vue";
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,12 @@ const routes = [
         path: '/gallery',
         name: 'gallery',
         component: GalleryView
+    },
+    {
+        path: '/gallery/:id',
+        name: 'gallery_location',
+        component: LocationGallery,
+        props: true
     },
 ];
 
