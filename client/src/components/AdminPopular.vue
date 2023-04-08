@@ -40,7 +40,7 @@
             v-for="item of $store.state.populars"
             :key="item._id"
         >
-          <img :src="`http://localhost:5000/pictures/popular/` + item.picture" alt="" class="popular__img">
+          <img :src="`/pictures/popular/` + item.picture" alt="" class="popular__img">
           <span class="popular__name">{{ item.name }}</span>
           <span class="popular__desc">{{ item.desc }}</span>
           <span class="popular__price">{{ item.price }}</span>
