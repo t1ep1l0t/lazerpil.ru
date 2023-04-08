@@ -43,22 +43,22 @@ const store = new Vuex.Store({
     },
     actions: {
         async get_popular () {
-            const response = await fetch('http://localhost:5000/api/populars/get-all');
+            const response = await fetch('/api/populars/get-all');
             const payload = await response.json();
             this.commit('set_popular', payload);
         },
         async get_faqs () {
-            const response = await fetch('http://localhost:5000/api/faqs/get');
+            const response = await fetch('/api/faqs/get');
             const payload = await response.json();
             this.commit('set_faqs', payload);
         },
         async get_locations () {
-            const response = await fetch('http://localhost:5000/api/locations/get');
+            const response = await fetch('/api/locations/get');
             const payload = await response.json();
             this.commit('set_locations', payload);
         },
         async get_reviews () {
-            const response = await fetch('http://localhost:5000/api/reviews/get');
+            const response = await fetch('/api/reviews/get');
             const payload = await response.json();
             this.commit('set_reviews', payload);
         },

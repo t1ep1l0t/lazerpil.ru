@@ -28,7 +28,7 @@
           </div>
           <div class="photos__content" v-if="location.service.length > 0">
             <img class="photos__img"
-                 :src="`http://localhost:5000/pictures/service/${image}`"
+                 :src="`/pictures/service/${image}`"
                  v-for="(image, index) of location.service"
                  :key="image + index"
             >
@@ -47,7 +47,7 @@
           </div>
           <div class="photos__content" v-if="location.result.length > 0">
             <img class="photos__img"
-                 :src="`http://localhost:5000/pictures/result/${image}`"
+                 :src="`/pictures/result/${image}`"
                  v-for="(image, index) of location.result"
                  :key="image + index"
             >
@@ -66,7 +66,7 @@
           </div>
           <div class="photos__content" v-if="location.equip.length > 0">
             <img class="photos__img"
-                 :src="`http://localhost:5000/pictures/equip/${image}`"
+                 :src="`/pictures/equip/${image}`"
                  v-for="(image, index) of location.equip"
                  :key="image + index"
             >
@@ -85,7 +85,7 @@
           </div>
           <div class="photos__content" v-if="location.interior.length > 0">
             <img class="photos__img"
-                 :src="`http://localhost:5000/pictures/interior/${image}`"
+                 :src="`/pictures/interior/${image}`"
                  v-for="(image, index) of location.interior"
                  :key="image + index"
             >
@@ -104,7 +104,7 @@
           </div>
           <div class="photos__content" v-if="location.entrance.length > 0">
             <img class="photos__img"
-                 :src="`http://localhost:5000/pictures/entrance/${image}`"
+                 :src="`/pictures/entrance/${image}`"
                  v-for="(image, index) of location.entrance"
                  :key="image + index"
             >

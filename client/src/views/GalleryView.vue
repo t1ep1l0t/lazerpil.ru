@@ -13,7 +13,7 @@
                          v-for="location of $store.state.locations"
                          :key="location._id"
             >
-              <img :src="`http://localhost:5000/pictures/interior/${location.interior[0]}`" alt="" class="gallery__location__img">
+              <img :src="`/pictures/interior/${location.interior[0]}`" alt="" class="gallery__location__img">
               <div class="gallery__location__content">
             <span class="metro">
               <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">

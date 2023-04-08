@@ -34,7 +34,7 @@
                    v-for="(img, index) of location.interior"
                    :key="index"
               >
-                <img class="img" :src="'http://localhost:5000/pictures/interior/' + img" alt="">
+                <img class="img" :src="'/pictures/interior/' + img" alt="">
               </div>
             </VueSlickCarousel>
             <button class="location__arrow location__arrow__next"
