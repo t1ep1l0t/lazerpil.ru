@@ -18,6 +18,7 @@ app.use('/', express.static(path.resolve('../client/dist')));
 app.use('/pictures', express.static(path.resolve('../client/pictures')));
 
 
+
 const startServer = async () => {
     try {
         await mongoose.connect(process.env.BD_URL);

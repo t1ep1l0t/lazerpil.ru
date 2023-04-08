@@ -7,6 +7,7 @@ import ReviewsView from "@/views/ReviewsView.vue";
 import ContactsView from "@/views/ContactsView.vue";
 import GalleryView from "@/views/GalleryView.vue";
 import LocationGallery from "@/views/LocationGallery.vue";
+import AdminView from "@/views/AdminView.vue";
 
 Vue.use(VueRouter);
 
@@ -47,6 +48,11 @@ const routes = [
         component: LocationGallery,
         props: true
     },
+    {
+        path: '/admin',
+        name: 'admin',
+        component: AdminView
+    }
 ];
 
 const router = new VueRouter({

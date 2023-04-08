@@ -8,8 +8,10 @@ const store = new Vuex.Store({
         menu: false,
         service: false,
         location_modal: false,
+        user: true,
+        auth_message: undefined,
 
-        populars: undefined,
+        populars: [],
         faqs: undefined,
         locations: undefined,
         reviews: undefined
@@ -39,6 +41,10 @@ const store = new Vuex.Store({
         },
         set_reviews(state, payload) {
             state.reviews = payload;
+        },
+        set_user(state, payload) {
+            state.user = payload.bool;
+            state.auth_message = payload.message;
         }
     },
     actions: {

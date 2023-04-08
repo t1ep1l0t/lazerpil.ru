@@ -9,6 +9,10 @@ class PopularController {
             const { name, desc, price } = req.body;
 
             const file = req.files?.picture;
+
+            console.log(req.body)
+            console.log(req.files)
+
             if(!file) {
                 return res.status(401).json({
                     message: 'Фотография не обнаружена, пожалуйста добавьте фотографию!'
