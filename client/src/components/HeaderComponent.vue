@@ -89,7 +89,7 @@ export default {
   width: 100%;
   padding: 8px 0;
   background: #FFFFFF;
-  z-index: 3;
+  z-index: 20;
 
   &__inner {
     width: 100%;

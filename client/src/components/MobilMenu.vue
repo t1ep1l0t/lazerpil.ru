@@ -68,7 +68,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 10;
   background: #FFFFFF;
   display: none;
   transform: translateY(-100%);
