@@ -136,6 +136,97 @@ class LocationController {
     }
     async update_one (req, res) {
         try {
+            const {metro, address, color, coords} = req.body;
+            const id = req.params.id;
+            const {entrance, equip, interior, result, service} = req.files;
+
+            const check_location = await LocationModel.findOne({_id: id});
+            if(!check_location) {
+                return res.status(401).json({
+                    message: 'Локация с таким id найдена'
+                })
+            }
+
+            let  entrance_picture, equip_picture, interior_picture, result_picture, service_picture;
+
+            if (entrance) {
+                if (entrance.length > 1) {
+                    entrance_picture = [];
+                    entrance.forEach(picture => {
+                        const pictures = LocationFileService.saveFile('../client/pictures/entrance/', picture);
+                        entrance_picture.push(pictures);
+                    });
+                    entrance_picture.forEach(picture => {
+                        check_location.entrance.push(picture)
+                    })
+                } else {
+                    entrance_picture = LocationFileService.saveFile('../client/pictures/entrance/', entrance);
+                    check_location.entrance.push(entrance_picture)
+                }
+            }
+            if (equip) {
+                if (equip.length > 1) {
+                    equip_picture = [];
+                    equip.forEach(picture => {
+                        const pictures = LocationFileService.saveFile('../client/pictures/equip/', picture);
+                        equip_picture.push(pictures);
+                    });
+                    equip_picture.forEach(picture => {
+                        check_location.equip.push(picture)
+                    })
+                } else {
+                    equip_picture = LocationFileService.saveFile('../client/pictures/equip/', equip);
+                    check_location.equip.push(equip_picture)
+                }
+            }
+            if (interior) {
+                if (interior.length > 1) {
+                    interior_picture = [];
+                    interior.forEach(picture => {
+                        const pictures = LocationFileService.saveFile('../client/pictures/interior/', picture);
+                        interior_picture.push(pictures);
+                    })
+                    interior_picture.forEach(picture => {
+                        check_location.interior.push(picture)
+                    })
+                } else {
+                    interior_picture = LocationFileService.saveFile('../client/pictures/interior/', interior);
+                    check_location.interior.push(interior_picture)
+                }
+            }
+            if (result) {
+                if (result.length > 1) {
+                    result_picture = [];
+                    result.forEach(picture => {
+                        const pictures = LocationFileService.saveFile('../client/pictures/result/', picture);
+                        result_picture.push(pictures);
+                    })
+                    result_picture.forEach(picture => {
+                        check_location.result.push(picture)
+                    })
+                } else {
+                    result_picture = LocationFileService.saveFile('../client/pictures/result/', result);
+                    check_location.result.push(result_picture)
+                }
+            }
+            if (service) {
+                if (service.length > 1) {
+                    service_picture = [];
+                    service.forEach(picture => {
+                        const pictures = LocationFileService.saveFile('../client/pictures/service/', picture);
+                        service_picture.push(pictures);
+                    })
+                    service_picture.forEach(picture => {
+                        check_location.service.push(picture)
+                    })
+                } else {
+                    service_picture = LocationFileService.saveFile('../client/pictures/service/', service);
+                    check_location.service.push(service_picture)
+                }
+            }
+
+            console.log(check_location)
+
 
         } catch (e) {
             console.log(e);

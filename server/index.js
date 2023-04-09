@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(upload.array())
+app.use(upload.any())
 app.use(cors());
 app.use(fileUpload({}));
 app.use('/api', router);
