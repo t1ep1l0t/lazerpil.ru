@@ -29,7 +29,7 @@
         </div>
       </div>
     </section>
-    <section class="popular" v-if="$store.state.populars">
+    <section class="popular" v-if="$store.state.populars.length > 0">
       <div class="container">
         <div class="popular__inner">
           <div class="popular__head">

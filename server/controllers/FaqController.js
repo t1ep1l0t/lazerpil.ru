@@ -50,7 +50,9 @@ class FaqController {
                 })
             }
 
-            const update_faq = await FaqModel.findByIdAndUpdate(id, {question: question, answer: answer}, {new: true})
+            const update_faq = await FaqModel.findByIdAndUpdate({_id: id}, {question: question, answer: answer}, {new: true});
+
+            console.log(update_faq)
 
             res.status(201).json(update_faq);
         } catch (e) {

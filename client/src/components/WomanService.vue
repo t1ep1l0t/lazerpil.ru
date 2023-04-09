@@ -1,6 +1,6 @@
 <template>
   <div id="woman_service">
-    <section class="complex" v-if="$store.state.populars">
+    <section class="complex" v-if="$store.state.complex.length > 0">
       <div class="complex__inner">
           <div class="complex__head">
             <h2 class="complex__title">
@@ -18,10 +18,10 @@
                               ref="complex_slider"
             >
               <div class="complex__slide"
-                   v-for="item of $store.state.populars"
+                   v-for="item of $store.state.complex"
                    :key="item._id"
               >
-                <img :src="'/pictures/popular/' + item.picture" alt="" class="complex__slide__img">
+                <img :src="'/pictures/complex/' + item.picture" alt="" class="complex__slide__img">
                 <h3 class="complex__slide__title">{{ item.name }}</h3>
                 <span class="complex__slide__desc">{{ item.desc }}</span>
                 <span class="complex__slide__price" v-if="item.price !== 'null'">{{ item.price + ' ₽' }} </span>
@@ -279,7 +279,7 @@ export default {
   },
   mounted() {
     this.get_item_active();
-    this.$store.dispatch('get_popular');
+    this.$store.dispatch('get_complex');
   }
 }
 </script>

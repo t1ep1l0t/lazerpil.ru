@@ -18,6 +18,9 @@
     background: none;
     border: none;
   }
+  input, textarea {
+    outline: none;
+  }
 }
 
 body {

@@ -1,13 +1,15 @@
-import PopularModel from "../models/PopularModel.js";
-import PopularFileService from "../services/PopularFileService.js";
+import ComplexModel from "../models/ComplexModel.js";
+import ComplexFileService from "../services/ComplexFileService.js";
 
-class PopularController {
-
-    async add_new_popular (req, res) {
+class ComplexController {
+    async add_new_complex (req, res) {
         try {
             const { name, desc, price } = req.body;
 
             const file = req.files?.picture;
+
+            console.log(req.body)
+            console.log(req.files)
 
             if(!file) {
                 return res.status(401).json({
@@ -15,9 +17,9 @@ class PopularController {
                 })
             }
 
-            const picture = PopularFileService.saveFile(file);
+            const picture = ComplexFileService.saveFile(file);
 
-            const new_popular = await PopularModel.create({
+            const new_popular = await ComplexModel.create({
                 name: name,
                 desc: desc,
                 price: price,
@@ -33,7 +35,7 @@ class PopularController {
             });
         }
     }
-    async update_popular (req, res) {
+    async update_complex (req, res) {
         try {
             const id = req.params.id;
 
@@ -46,9 +48,9 @@ class PopularController {
                 })
             }
 
-            const picture = PopularFileService.saveFile(file);
+            const picture = ComplexFileService.saveFile(file);
 
-            const condidate = await PopularModel.findById(id);
+            const condidate = await ComplexModel.findById(id);
             if(!condidate) {
                 return res.status(401).json({
                     message: 'Блок с таким id не найден'
@@ -62,11 +64,11 @@ class PopularController {
                 picture: picture
             };
 
-            const old_popular = await PopularModel.findByIdAndUpdate({_id: id}, update, {new: true});
+            const old_popular = await ComplexModel.findByIdAndUpdate({_id: id}, update, {new: true});
 
             await old_popular.save();
 
-            const updated_popular = await PopularModel.findById(id);
+            const updated_popular = await ComplexModel.findById(id);
 
             return res.status(200).json(updated_popular);
         } catch (e) {
@@ -76,9 +78,9 @@ class PopularController {
             });
         }
     }
-    async get_all_popular (req, res) {
+    async get_all_complex (req, res) {
         try {
-            const populars = await PopularModel.find();
+            const populars = await ComplexModel.find();
 
             res.set({
                 'Content-Type' : 'application/json; charset=utf-8'
@@ -92,11 +94,11 @@ class PopularController {
             });
         }
     }
-    async get_one_popular (req, res) {
+    async get_one_complex (req, res) {
         try {
             const id = req.params.id;
 
-            const popular = await PopularModel.findById(id);
+            const popular = await ComplexModel.findById(id);
             if(!popular) {
                 return res.status(401).json({
                     message: 'Блок с таким id не найден'
@@ -111,15 +113,15 @@ class PopularController {
             });
         }
     }
-    async delete_all_popular (req, res) {
+    async delete_all_complex (req, res) {
         try {
-            const populars_folder = await PopularModel.find();
+            const populars_folder = await ComplexModel.find();
 
             populars_folder.forEach(popular => {
-                PopularFileService.deleteFile(popular.picture);
+                ComplexFileService.deleteFile(popular.picture);
             });
 
-            const populars = await PopularModel.deleteMany({});
+            const populars = await ComplexModel.deleteMany({});
 
             res.status(200).json(populars);
         } catch (e) {
@@ -129,18 +131,18 @@ class PopularController {
             });
         }
     }
-    async delete_one_popular (req, res) {
+    async delete_one_complex (req, res) {
         try {
             const id = req.params.id;
 
-            const popular = await PopularModel.findByIdAndDelete(id);
+            const popular = await ComplexModel.findByIdAndDelete(id);
             if(!popular) {
                 return res.status(401).json({
                     message: 'Блок с таким id не найден'
                 })
             }
 
-            PopularFileService.deleteFile(popular.picture);
+            ComplexFileService.deleteFile(popular.picture);
 
             return res.status(200).json(popular);
         } catch (e) {
@@ -151,4 +153,4 @@ class PopularController {
         }
     }
 }
-export default new PopularController;
+export default new ComplexController;

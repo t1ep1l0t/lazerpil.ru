@@ -8,13 +8,14 @@ const store = new Vuex.Store({
         menu: false,
         service: false,
         location_modal: false,
-        user: false,
+        user: true,
         auth_message: undefined,
 
         populars: [],
-        faqs: undefined,
-        locations: undefined,
-        reviews: undefined
+        complex: [],
+        faqs: [],
+        locations: [],
+        reviews: []
     },
     mutations: {
         set_menu (state) {
@@ -33,8 +34,11 @@ const store = new Vuex.Store({
         set_popular (state, payload) {
             state.populars = payload
         },
+        set_complex (state, payload) {
+            state.complex = payload
+        },
         set_faqs (state, payload) {
-            state.faqs = payload
+            state.faqs = payload.reverse()
         },
         set_locations(state, payload) {
             state.locations = payload;
@@ -52,6 +56,11 @@ const store = new Vuex.Store({
             const response = await fetch('/api/populars/get-all');
             const payload = await response.json();
             this.commit('set_popular', payload);
+        },
+        async get_complex () {
+            const response = await fetch('/api/complex/get');
+            const payload = await response.json();
+            this.commit('set_complex', payload);
         },
         async get_faqs () {
             const response = await fetch('/api/faqs/get');
