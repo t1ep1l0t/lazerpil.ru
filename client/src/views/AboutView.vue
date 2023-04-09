@@ -69,6 +69,25 @@
               <path d="M1361.06 13.0607C1361.65 12.4749 1361.65 11.5251 1361.06 10.9393L1351.51 1.3934C1350.93 0.807611 1349.98 0.807611 1349.39 1.3934C1348.81 1.97919 1348.81 2.92893 1349.39 3.51472L1357.88 12L1349.39 20.4853C1348.81 21.0711 1348.81 22.0208 1349.39 22.6066C1349.98 23.1924 1350.93 23.1924 1351.51 22.6066L1361.06 13.0607ZM0 13.5H1360V10.5H0V13.5Z" fill="#6392A6"/>
             </svg>
             <span class="evolution__result">Результат сохраняется</span>
+            <div class="evolution__animated">
+              <svg width="24" height="24"
+                   viewBox="0 0 91 91" id="Layer_1"
+                   version="1.1"
+                   xml:space="preserve"
+                   xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+                   fill="#000000"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <g>
+                    <path class="st0" d="M36.6,43.5C31.1,49,25.7,54.8,20.7,60.8c-5.1,6.2-12,13.7-12.7,21.9c-0.1,1.3,1.5,2.5,2.7,2 c7.7-3.1,13.1-11.4,18.6-17.4c6.7-7.3,13.6-14.4,20.9-21c2.8-2.5,1.9-7.3-1.2-9.1C36.3,30,27,18.8,19.7,6.2 C15-1.9,2.2,5.6,7.2,13.5C14.8,25.7,24.6,35.8,36.6,43.5z"></path>
+                    <path class="st0" d="M72.9,43.5C67.3,49,62,54.8,57,60.8C52,67.1,45,74.5,44.3,82.7c-0.1,1.3,1.5,2.5,2.7,2 c7.7-3.1,13.1-11.4,18.6-17.4c6.7-7.3,13.6-14.4,20.9-21c2.8-2.5,1.9-7.3-1.2-9.1C72.6,30,63.3,18.8,56,6.2 c-4.7-8.1-17.5-0.6-12.5,7.3C51.1,25.7,60.9,35.8,72.9,43.5z"></path>
+                  </g>
+                </g>
+              </svg>
+            </div>
             <ul class="evolution__list">
               <li class="evolution__item">
                 <span class="evolution__name">
@@ -590,6 +609,22 @@ export default {
 
     &::-webkit-scrollbar {
       display: none;
+    }
+  }
+  &__animated {
+    position: sticky;
+    top: 90%;
+    left: 90%;
+    width: 24px;
+    animation: translate 2s linear infinite alternate;
+
+    @keyframes translate {
+      0% {
+        transform: translateX(0px);
+      }
+      100% {
+        transform: translateX(20px);
+      }
     }
   }
   &__list {
