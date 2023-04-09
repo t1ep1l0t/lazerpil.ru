@@ -8,7 +8,7 @@ const store = new Vuex.Store({
         menu: false,
         service: false,
         location_modal: false,
-        user: true,
+        user: false,
         auth_message: undefined,
 
         populars: [],
