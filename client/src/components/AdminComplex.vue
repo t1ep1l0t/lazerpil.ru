@@ -40,7 +40,7 @@
             v-for="item of $store.state.complex"
             :key="item._id"
         >
-          <img :src="`/pictures/popular/` + item.picture" alt="" class="popular__img">
+          <img :src="`/pictures/complex/` + item.picture" alt="" class="popular__img">
           <span class="popular__name">{{ item.name }}</span>
           <span class="popular__desc">{{ item.desc }}</span>
           <span class="popular__price">{{ item.price }}</span>
