@@ -3,6 +3,7 @@
     <HeaderComponent />
     <MobilMenu />
     <AddReviewModal />
+    <CertificateModal />
     <div id="page"><router-view /></div>
     <FooterComponent />
   </div>
@@ -14,10 +15,12 @@ import HeaderComponent from "@/components/HeaderComponent.vue";
 import MobilMenu from "@/components/MobilMenu.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 import AddReviewModal from "@/components/AddReviewModal.vue";
+import CertificateModal from "@/components/CertificateModal.vue";
 
 export default {
   name: 'App',
   components: {
+    CertificateModal,
     AddReviewModal,
     FooterComponent,
     MobilMenu,

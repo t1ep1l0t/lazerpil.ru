@@ -48,6 +48,7 @@
               <div class="popular__slide"
                    v-for="item of $store.state.populars"
                    :key="item._id"
+                   @click="show_certificate(item)"
               >
                 <img :src="'/pictures/popular/' + item.picture" alt="" class="popular__slide__img">
                 <h3 class="popular__slide__title">{{ item.name }}</h3>
@@ -150,6 +151,12 @@ export default {
     popular_slider_next () {
       this.$refs.popular_slider.next()
     },
+    show_certificate (item) {
+      console.log('click')
+      if (item.name === 'Гарантия на 12 месяцев') {
+        this.$store.commit('set_certificate')
+      }
+    }
   },
   mounted () {
     this.$store.dispatch('get_popular');
@@ -421,6 +428,7 @@ export default {
       height: auto;
       margin-bottom: 14px;
       border-radius: 30px;
+      cursor: pointer;
     }
     &__title {
       font-weight: 700;

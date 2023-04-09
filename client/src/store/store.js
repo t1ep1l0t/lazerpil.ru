@@ -8,6 +8,7 @@ const store = new Vuex.Store({
         menu: false,
         service: false,
         location_modal: false,
+        certificate: false,
         user: false,
         auth_message: undefined,
 
@@ -30,6 +31,10 @@ const store = new Vuex.Store({
         set_location_modal(state) {
             state.location_modal = !state.location_modal;
         },
+        set_certificate(state) {
+            state.certificate = !state.certificate
+        },
+
 
         set_popular (state, payload) {
             state.populars = payload
@@ -44,7 +49,7 @@ const store = new Vuex.Store({
             state.locations = payload;
         },
         set_reviews(state, payload) {
-            state.reviews = payload;
+            state.reviews = payload.reverse();
         },
         set_user(state, payload) {
             state.user = payload.bool;
