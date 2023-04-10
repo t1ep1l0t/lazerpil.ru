@@ -28,55 +28,55 @@ class LocationController {
                 if (entrance.length > 1) {
                     entrance_picture = [];
                     entrance.forEach(picture => {
-                        const pictures = LocationFileService.saveFile('../client/pictures/entrance/', picture);
+                        const pictures = LocationFileService.saveFile('../client/static/entrance/', picture);
                         entrance_picture.push(pictures);
                     });
                 } else {
-                    entrance_picture = LocationFileService.saveFile('../client/pictures/entrance/', entrance);
+                    entrance_picture = LocationFileService.saveFile('../client/static/entrance/', entrance);
                 }
             }
             if (equip) {
                 if (equip.length > 1) {
                     equip_picture = [];
                     equip.forEach(picture => {
-                        const pictures = LocationFileService.saveFile('../client/pictures/equip/', picture);
+                        const pictures = LocationFileService.saveFile('../client/static/equip/', picture);
                         equip_picture.push(pictures);
                     });
                 } else {
-                    equip_picture = LocationFileService.saveFile('../client/pictures/equip/', equip);
+                    equip_picture = LocationFileService.saveFile('../client/static/equip/', equip);
                 }
             }
             if (interior) {
                 if (interior.length > 1) {
                     interior_picture = [];
                     interior.forEach(picture => {
-                        const pictures = LocationFileService.saveFile('../client/pictures/interior/', picture);
+                        const pictures = LocationFileService.saveFile('../client/static/interior/', picture);
                         interior_picture.push(pictures);
                     })
                 } else {
-                    interior_picture = LocationFileService.saveFile('../client/pictures/interior/', interior);
+                    interior_picture = LocationFileService.saveFile('../client/static/interior/', interior);
                 }
             }
             if (result) {
                 if (result.length > 1) {
                     result_picture = [];
                     result.forEach(picture => {
-                        const pictures = LocationFileService.saveFile('../client/pictures/result/', picture);
+                        const pictures = LocationFileService.saveFile('../client/static/result/', picture);
                         result_picture.push(pictures);
                     })
                 } else {
-                    result_picture = LocationFileService.saveFile('../client/pictures/result/', result);
+                    result_picture = LocationFileService.saveFile('../client/static/result/', result);
                 }
             }
             if (service) {
                 if (service.length > 1) {
                     service_picture = [];
                     service.forEach(picture => {
-                        const pictures = LocationFileService.saveFile('../client/pictures/service/', picture);
+                        const pictures = LocationFileService.saveFile('../client/static/service/', picture);
                         service_picture.push(pictures);
                     })
                 } else {
-                    service_picture = LocationFileService.saveFile('../client/pictures/service/', service);
+                    service_picture = LocationFileService.saveFile('../client/static/service/', service);
                 }
             }
 
@@ -120,7 +120,7 @@ class LocationController {
 
             const check_id = await LocationModel.findById(id);
             if(!check_id) {
-                res.status(400).json({
+               return res.status(400).json({
                     message: 'Локация стаким id не найдена.'
                 });
             }
@@ -225,8 +225,6 @@ class LocationController {
                 }
             }
 
-            console.log(check_location)
-
 
         } catch (e) {
             console.log(e);
@@ -250,27 +248,27 @@ class LocationController {
 
             if (entrance.length > 0) {
                 entrance.forEach(picture => {
-                    LocationFileService.deleteFile(`../client/pictures/entrance/${picture}`);
+                    LocationFileService.deleteFile(`../client/static/entrance/${picture}`);
                 })
             }
             if (equip.length > 0) {
                 equip.forEach(picture => {
-                    LocationFileService.deleteFile(`../client/pictures/equip/${picture}`);
+                    LocationFileService.deleteFile(`../client/static/equip/${picture}`);
                 })
             }
             if (interior.length > 0) {
                 interior.forEach(picture => {
-                    LocationFileService.deleteFile(`../client/pictures/interior/${picture}`);
+                    LocationFileService.deleteFile(`../client/static/interior/${picture}`);
                 })
             }
             if (result.length > 0) {
                 result.forEach(picture => {
-                    LocationFileService.deleteFile(`../client/pictures/result/${picture}`);
+                    LocationFileService.deleteFile(`../client/static/result/${picture}`);
                 })
             }
             if (service.length > 0) {
                 service.forEach(picture => {
-                    LocationFileService.deleteFile(`../client/pictures/service/${picture}`);
+                    LocationFileService.deleteFile(`../client/static/service/${picture}`);
                 })
             }
 
@@ -290,11 +288,11 @@ class LocationController {
     async delete_all (req, res) {
         try {
 
-            LocationFileService.deleteFiles('../client/pictures/entrance/');
-            LocationFileService.deleteFiles('../client/pictures/equip/');
-            LocationFileService.deleteFiles('../client/pictures/interior/');
-            LocationFileService.deleteFiles('../client/pictures/result/');
-            LocationFileService.deleteFiles('../client/pictures/service/');
+            LocationFileService.deleteFiles('../client/static/entrance/');
+            LocationFileService.deleteFiles('../client/static/equip/');
+            LocationFileService.deleteFiles('../client/static/interior/');
+            LocationFileService.deleteFiles('../client/static/result/');
+            LocationFileService.deleteFiles('../client/static/service/');
 
             const locations = await LocationModel.deleteMany({});
 

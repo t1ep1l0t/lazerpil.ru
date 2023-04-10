@@ -24,10 +24,12 @@ class LocationFileService {
         fs.readdir(path_to_dir, (err, files) => {
             if(err) throw err; // не прочитать содержимое папки
             files.forEach(file => {
-                fs.unlink(path.resolve(path_to_dir + file), err => {
-                    if(err) throw err; // не удалось удалить файл
-                    console.log('Файл успешно удалён');
-                });
+                if (file !== 'txt') {
+                    fs.unlink(path.resolve(path_to_dir + file), err => {
+                        if(err) throw err; // не удалось удалить файл
+                        console.log('Файл успешно удалён');
+                    });
+                }
             })
         });
     }
