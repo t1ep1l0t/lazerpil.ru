@@ -7,21 +7,17 @@ import * as path from "path";
 import router from "./routers/index.js";
 import fileUpload from 'express-fileupload';
 import history from 'connect-history-api-fallback';
-import bodyParser from "body-parser";
-import multer from 'multer'
-const upload = multer()
+// import bodyParser from "body-parser";
 
 const app = express();
 app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(upload.any())
+// app.use(bodyParser.json());
 app.use(cors());
 app.use(fileUpload({}));
 app.use('/api', router);
 app.use(history({index: '/index.html'}));
 app.use('/', express.static(path.resolve('../client/dist')));
-app.use('/pictures', express.static(path.resolve('../client/pictures')));
+app.use('/static', express.static(path.resolve('../client/static')));
 
 
 

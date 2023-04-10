@@ -9,7 +9,7 @@ const store = new Vuex.Store({
         service: false,
         location_modal: false,
         certificate: false,
-        user: false,
+        user: true,
         auth_message: undefined,
 
         populars: [],
@@ -73,7 +73,7 @@ const store = new Vuex.Store({
             this.commit('set_faqs', payload);
         },
         async get_locations () {
-            const response = await fetch('/api/locations/get');
+            const response = await fetch('http://localhost:5000/api/locations/get');
             const payload = await response.json();
             this.commit('set_locations', payload);
         },

@@ -13,7 +13,7 @@ router.use('/complex', complex_router);
 router.use('/faqs', faq_router);
 router.use('/locations', location_router);
 router.use('/reviews', review_router);
-router.use('/admin-panel', admin_router);
+router.use('/admin', admin_router);
 
 
 
