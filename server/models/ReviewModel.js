@@ -5,7 +5,7 @@ const review_router = new mongoose.Schema({
     review: {type: String, require: false},
     count: {type: Number, require: true},
     path: {type: String, require: false},
-    date: {type: Date, default: Date.now()}
+    date: {type: String, default: true}
 });
 
 export default mongoose.model('review_router', review_router);
