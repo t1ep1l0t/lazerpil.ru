@@ -5,7 +5,7 @@ class ComplexFileService {
     saveFile (picture) {
         try {
             const fileName = uuid.v4() + '.jpg';
-            const filePath = path.resolve('../client/pictures/complex/', fileName);
+            const filePath = path.resolve('../client/static/complex/', fileName);
             picture.mv(filePath);
             return fileName;
         } catch (e) {
@@ -13,7 +13,7 @@ class ComplexFileService {
         }
     }
     deleteFile (file_name) {
-        fs.unlink(path.resolve(`../client/pictures/complex/${file_name}`), err => {
+        fs.unlink(path.resolve(`../client/static/complex/${file_name}`), err => {
             if(err) throw err; // не удалось удалить файл
             console.log('Файл успешно удалён');
         });

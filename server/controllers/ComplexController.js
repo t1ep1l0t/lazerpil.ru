@@ -8,9 +8,6 @@ class ComplexController {
 
             const file = req.files?.picture;
 
-            console.log(req.body)
-            console.log(req.files)
-
             if(!file) {
                 return res.status(401).json({
                     message: 'Фотография не обнаружена, пожалуйста добавьте фотографию!'
@@ -35,49 +32,6 @@ class ComplexController {
             });
         }
     }
-    async update_complex (req, res) {
-        try {
-            const id = req.params.id;
-
-            const { name, desc, price } = req.body;
-
-            const file = req.files?.picture;
-            if(!file) {
-                return res.status(401).json({
-                    message: 'Фотография не обнаружена, пожалуйста добавьте фотографию!'
-                })
-            }
-
-            const picture = ComplexFileService.saveFile(file);
-
-            const condidate = await ComplexModel.findById(id);
-            if(!condidate) {
-                return res.status(401).json({
-                    message: 'Блок с таким id не найден'
-                })
-            }
-
-            const update = {
-                name: name,
-                desc: desc,
-                price: price,
-                picture: picture
-            };
-
-            const old_popular = await ComplexModel.findByIdAndUpdate({_id: id}, update, {new: true});
-
-            await old_popular.save();
-
-            const updated_popular = await ComplexModel.findById(id);
-
-            return res.status(200).json(updated_popular);
-        } catch (e) {
-            console.log(e);
-            return res.status(500).json({
-                message: 'Ошибка на стороне сервера, пожалуйста попробуйте позже!'
-            });
-        }
-    }
     async get_all_complex (req, res) {
         try {
             const populars = await ComplexModel.find();
@@ -87,25 +41,6 @@ class ComplexController {
             })
             res.status(200).json(populars);
 
-        } catch (e) {
-            console.log(e);
-            return res.status(500).json({
-                message: 'Ошибка на стороне сервера, пожалуйста попробуйте позже!'
-            });
-        }
-    }
-    async get_one_complex (req, res) {
-        try {
-            const id = req.params.id;
-
-            const popular = await ComplexModel.findById(id);
-            if(!popular) {
-                return res.status(401).json({
-                    message: 'Блок с таким id не найден'
-                })
-            }
-
-            return res.status(200).json(popular);
         } catch (e) {
             console.log(e);
             return res.status(500).json({
