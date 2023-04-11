@@ -4,9 +4,8 @@ import LocationFileService from "../services/LocationFileService.js";
 class LocationController {
     async add_one (req, res) {
         try {
-            const {metro, address, color, coords} = req.body;
+            const {metro, address, color, coords, path} = req.body;
 
-            const {entrance, equip, interior, result, service} = req.files;
 
             const check_address = await LocationModel.findOne({address: address});
             if(check_address) {
@@ -21,6 +20,25 @@ class LocationController {
                     message: 'Ошибка. Локация с такими координатами уже существует.'
                 })
             }
+
+            if (!req.files) {
+                const new_location = await LocationModel.create({
+                    metro,
+                    address,
+                    color,
+                    coords,
+                    path,
+                    entrance: [],
+                    equip: [],
+                    interior: [],
+                    result: [],
+                    service: []
+                });
+
+                return res.status(200).json(new_location);
+            }
+
+            const {entrance, equip, interior, result, service} = req.files;
 
             let  entrance_picture, equip_picture, interior_picture, result_picture, service_picture;
 
@@ -136,9 +154,8 @@ class LocationController {
     }
     async update_one (req, res) {
         try {
-            const {metro, address, color, coords} = req.body;
+            const {metro, address, color, coords, path, deleted} = req.body;
             const id = req.params.id;
-            const {entrance, equip, interior, result, service} = req.files;
 
             const check_location = await LocationModel.findOne({_id: id});
             if(!check_location) {
@@ -147,20 +164,69 @@ class LocationController {
                 })
             }
 
+            if (!req.files) {
+                await LocationModel.findByIdAndUpdate(
+                    id,
+                    {metro, address, color, coords, path},
+                    {new: true}
+                );
+
+                if (!deleted) {
+                    return res.status(201).json({
+                        message: 'Локация успешно обновлена.'
+                    })
+                }
+                deleted.forEach(item => {
+                    if (item.dir === 'entrance') {
+                        LocationFileService.deleteFile(`../client/static/entrance/${item.name}`);
+                        const arr = check_location.entrance.filter(name => name !== item.name);
+                        check_location.entrance = arr;
+                    }
+                    if (item.dir === 'equip') {
+                        LocationFileService.deleteFile(`../client/static/equip/${item.name}`);
+                        const arr = check_location.equip.filter(name => name !== item.name);
+                        check_location.equip = arr;
+                    }
+                    if (item.dir === 'interior') {
+                        LocationFileService.deleteFile(`../client/static/interior/${item.name}`);
+                        const arr = check_location.interior.filter(name => name !== item.name);
+                        check_location.interior = arr
+                    }
+                    if (item.dir === 'result') {
+                        LocationFileService.deleteFile(`../client/static/result/${item.name}`);
+                        const arr = check_location.result.filter(name => name !== item.name);
+                        check_location.result = arr;
+                    }
+                    if (item.dir === 'service') {
+                        LocationFileService.deleteFile(`../client/static/service/${item.name}`);
+                        const arr = check_location.service.filter(name => name !== item.name);
+                        check_location.service = arr;
+                    }
+                })
+
+                await check_location.save();
+
+                return res.status(201).json({
+                    message: 'Локация успешно обновлена. после'
+                })
+            }
+
+            const {entrance, equip, interior, result, service} = req.files;
+
             let  entrance_picture, equip_picture, interior_picture, result_picture, service_picture;
 
             if (entrance) {
                 if (entrance.length > 1) {
                     entrance_picture = [];
                     entrance.forEach(picture => {
-                        const pictures = LocationFileService.saveFile('../client/pictures/entrance/', picture);
+                        const pictures = LocationFileService.saveFile('../client/static/entrance/', picture);
                         entrance_picture.push(pictures);
                     });
                     entrance_picture.forEach(picture => {
                         check_location.entrance.push(picture)
                     })
                 } else {
-                    entrance_picture = LocationFileService.saveFile('../client/pictures/entrance/', entrance);
+                    entrance_picture = LocationFileService.saveFile('../client/static/entrance/', entrance);
                     check_location.entrance.push(entrance_picture)
                 }
             }
@@ -168,14 +234,14 @@ class LocationController {
                 if (equip.length > 1) {
                     equip_picture = [];
                     equip.forEach(picture => {
-                        const pictures = LocationFileService.saveFile('../client/pictures/equip/', picture);
+                        const pictures = LocationFileService.saveFile('../client/static/equip/', picture);
                         equip_picture.push(pictures);
                     });
                     equip_picture.forEach(picture => {
                         check_location.equip.push(picture)
                     })
                 } else {
-                    equip_picture = LocationFileService.saveFile('../client/pictures/equip/', equip);
+                    equip_picture = LocationFileService.saveFile('../client/static/equip/', equip);
                     check_location.equip.push(equip_picture)
                 }
             }
@@ -183,14 +249,14 @@ class LocationController {
                 if (interior.length > 1) {
                     interior_picture = [];
                     interior.forEach(picture => {
-                        const pictures = LocationFileService.saveFile('../client/pictures/interior/', picture);
+                        const pictures = LocationFileService.saveFile('../client/static/interior/', picture);
                         interior_picture.push(pictures);
                     })
                     interior_picture.forEach(picture => {
                         check_location.interior.push(picture)
                     })
                 } else {
-                    interior_picture = LocationFileService.saveFile('../client/pictures/interior/', interior);
+                    interior_picture = LocationFileService.saveFile('../client/static/interior/', interior);
                     check_location.interior.push(interior_picture)
                 }
             }
@@ -198,14 +264,14 @@ class LocationController {
                 if (result.length > 1) {
                     result_picture = [];
                     result.forEach(picture => {
-                        const pictures = LocationFileService.saveFile('../client/pictures/result/', picture);
+                        const pictures = LocationFileService.saveFile('../client/static/result/', picture);
                         result_picture.push(pictures);
                     })
                     result_picture.forEach(picture => {
                         check_location.result.push(picture)
                     })
                 } else {
-                    result_picture = LocationFileService.saveFile('../client/pictures/result/', result);
+                    result_picture = LocationFileService.saveFile('../client/static/result/', result);
                     check_location.result.push(result_picture)
                 }
             }
@@ -213,17 +279,50 @@ class LocationController {
                 if (service.length > 1) {
                     service_picture = [];
                     service.forEach(picture => {
-                        const pictures = LocationFileService.saveFile('../client/pictures/service/', picture);
+                        const pictures = LocationFileService.saveFile('../client/static/service/', picture);
                         service_picture.push(pictures);
                     })
                     service_picture.forEach(picture => {
                         check_location.service.push(picture)
                     })
                 } else {
-                    service_picture = LocationFileService.saveFile('../client/pictures/service/', service);
+                    service_picture = LocationFileService.saveFile('../client/static/service/', service);
                     check_location.service.push(service_picture)
                 }
             }
+
+            if (deleted) {
+                if (deleted.dir === 'entrance') {
+                    LocationFileService.deleteFile(`../client/static/entrance/${deleted.name}`);
+                    check_location.entrance.filter(name => name !== deleted.name);
+                }
+                if (deleted.dir === 'equip') {
+                    LocationFileService.deleteFile(`../client/static/equip/${deleted.name}`);
+                    check_location.equip.filter(name => name !== deleted.name);
+                }
+                if (deleted.dir === 'interior') {
+                    LocationFileService.deleteFile(`../client/static/interior/${deleted.name}`);
+                    check_location.interior.filter(name => name !== deleted.name);
+                }
+                if (deleted.dir === 'result') {
+                    LocationFileService.deleteFile(`../client/static/result/${deleted.name}`);
+                    check_location.result.filter(name => name !== deleted.name);
+                }
+                if (deleted.dir === 'service') {
+                    LocationFileService.deleteFile(`../client/static/service/${deleted.name}`);
+                    check_location.service.filter(name => name !== deleted.name);
+                }
+            }
+
+            await check_location.save();
+
+            const updated = await LocationModel.findByIdAndUpdate(
+                id,
+                {metro, address, color, coords, path},
+                {new: true}
+            )
+
+            res.status(201).json(updated)
 
 
         } catch (e) {
