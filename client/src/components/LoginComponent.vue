@@ -72,7 +72,7 @@ export default {
         password: this.password
       }
 
-      const response = await fetch('http://localhost:5000/api/admin-panel/login', {
+      const response = await fetch('/api/admin/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -80,14 +80,18 @@ export default {
         body: JSON.stringify(data)
       });
       const result = await response.json();
+      console.log(result)
 
       if (response.status === 200) {
-        this.$store.commit('set_user', {bool: true, message: result.message});
+        this.$store.commit('set_user', {bool: true, message: result.message, token: result.admin.token});
       }
       else {
-        this.$store.commit('set_user', {bool: false, message: result.message});
+        this.$store.commit('set_user', {bool: false, message: result.message, token: undefined});
       }
     }
+  },
+  mounted() {
+    this.$store.dispatch('check_token');
   }
 }
 </script>

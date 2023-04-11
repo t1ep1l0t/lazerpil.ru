@@ -6,7 +6,6 @@ class LocationController {
         try {
             const {metro, address, color, coords, path} = req.body;
 
-
             const check_address = await LocationModel.findOne({address: address});
             if(check_address) {
                 return res.status(400).json({
@@ -23,11 +22,11 @@ class LocationController {
 
             if (!req.files) {
                 const new_location = await LocationModel.create({
-                    metro,
-                    address,
-                    color,
-                    coords,
-                    path,
+                    metro: metro,
+                    address: address,
+                    color: color,
+                    coords: coords,
+                    path: path,
                     entrance: [],
                     equip: [],
                     interior: [],

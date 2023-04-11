@@ -7,13 +7,13 @@
             <h1 class="gallery__title">ГАЛЕРЕЯ</h1>
             <h2 class="gallery__subtitle">Выберете нужную локацию</h2>
           </div>
-          <div class="gallery__content" v-if="$store.state.locations">
+          <div class="gallery__content" v-if="$store.state.locations > 0">
             <router-link class="gallery__location"
                          :to="`/gallery/${location._id}`"
                          v-for="location of $store.state.locations"
                          :key="location._id"
             >
-              <img :src="`/pictures/interior/${location.interior[0]}`" alt="" class="gallery__location__img">
+              <img :src="`/static/interior/${location.interior[0]}`" alt="" class="gallery__location__img">
               <div class="gallery__location__content">
             <span class="metro">
               <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">

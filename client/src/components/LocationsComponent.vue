@@ -1,5 +1,5 @@
 <template>
-  <section class="location" v-if="$store.state.locations">
+  <section class="location" v-if="$store.state.locations.length > 0">
     <div class="container">
       <div class="location__inner">
         <div class="location__head">
@@ -34,7 +34,7 @@
                    v-for="(img, index) of location.interior"
                    :key="index"
               >
-                <img class="img" :src="'/pictures/interior/' + img" alt="">
+                <img class="img" :src="'/static/interior/' + img" alt="">
               </div>
             </VueSlickCarousel>
             <button class="location__arrow location__arrow__next"

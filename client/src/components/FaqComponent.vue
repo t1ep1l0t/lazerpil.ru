@@ -1,5 +1,5 @@
 <template>
-  <section class="faq" v-if="$store.state.faqs">
+  <section class="faq" v-if="$store.state.faqs.length > 0">
     <div class="container">
       <div class="faq__inner">
         <div class="faq__head">

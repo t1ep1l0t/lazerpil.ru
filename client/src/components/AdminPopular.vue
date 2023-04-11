@@ -40,7 +40,7 @@
             v-for="item of $store.state.populars"
             :key="item._id"
         >
-          <img :src="`/pictures/popular/` + item.picture" alt="" class="popular__img">
+          <img :src="`/static/popular/` + item.picture" alt="" class="popular__img">
           <span class="popular__name">{{ item.name }}</span>
           <span class="popular__desc">{{ item.desc }}</span>
           <span class="popular__price">{{ item.price }}</span>
@@ -78,19 +78,19 @@ export default {
       form_data.append("price", this.price);
       form_data.append("picture", this.picture);
 
-      const response = await fetch('/api/populars/add-new', {
+      const response = await fetch('/api/populars/add', {
         method: 'POST',
         body: form_data
       });
 
       if(response.status === 200) {
-        const response = await fetch('/api/populars/get-all');
+        const response = await fetch('/api/populars/get');
         const payload = await response.json();
         this.$store.commit('set_popular', payload);
       }
     },
     async delete_one_popular (item) {
-      const response = await fetch(`/api/populars/delete-one/${item._id}`, {
+      const response = await fetch(`/api/populars/delete/${item._id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -98,16 +98,16 @@ export default {
       });
 
       if(response.status === 200) {
-        const response = await fetch('/api/populars/get-all');
+        const response = await fetch('/api/populars/get');
         const payload = await response.json();
         this.$store.commit('set_popular', payload);
       }
     },
     async delegate_all_popular () {
-      const response = await fetch('/api/populars/delete-all', {method: 'DELETE'});
+      const response = await fetch('/api/populars/delete', {method: 'DELETE'});
 
       if(response.status === 200) {
-        const response = await fetch('/api/populars/get-all');
+        const response = await fetch('/api/populars/get');
         const payload = await response.json();
         this.$store.commit('set_popular', payload);
       }

@@ -35,8 +35,7 @@
               <div class="reviews__card__info">
                 <input class="input" type="number" v-model="review.count" style="width: 55px; margin-right: 10px">
                 <div class="reviews__card__date">
-                  <input class="input" type="text" v-model="review.date.split('T')[0]">
-                  {{ review.date.split('T')[0] }}
+                  <input class="input" type="text" v-model="review.date">
                 </div>
               </div>
             </div>
@@ -68,7 +67,7 @@ export default {
     return {
       author: '',
       review: '',
-      count: Number,
+      count: null,
       path: '',
       date: '',
     }
@@ -114,10 +113,11 @@ export default {
       const data = {
         author: item.author,
         review: item.review,
-        count: Number(item.count),
+        count: item.count,
         path: item.path,
         date: item.date
       };
+      console.log(data)
 
       const response = await fetch(`/api/reviews/update/${item._id}`, {
         method: 'PUT',
@@ -127,7 +127,7 @@ export default {
         body: JSON.stringify(data)
       })
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         const response = await fetch('/api/reviews/get');
         const payload = await response.json();
         this.$store.commit('set_reviews', payload);

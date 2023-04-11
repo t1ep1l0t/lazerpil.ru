@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 class TokenService {
     create_token (username) {
-        return jwt.sign({username: username}, process.env.TOKEN_SK, {expiresIn: 60 * 60});
+        return jwt.sign({username: username}, process.env.TOKEN_SK, {expiresIn: '1h'});
     }
 
     verify_token (token) {

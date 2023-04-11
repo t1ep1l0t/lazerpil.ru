@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 
 const LocationModel = new mongoose.Schema({
     metro: {type: String, require: true, unique: false},
-    address: {type: String, require: true, unique: true},
+    address: {type: String, require: true, unique: false},
     color: {type: String, require: true, unique: false},
-    coords: [{type: String, require: true, unique: true}],
+    coords: [{type: String, require: true, unique: false}],
     path: {type: String, require: true, unique: false},
 
     entrance: [{type: String, require: false, unique: false }],

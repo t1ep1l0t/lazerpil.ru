@@ -8,7 +8,7 @@
       </div>
     </div>
   </section>
-  <section class="add" v-if="$store.state.locations">
+  <section class="add" v-if="$store.state.locations.length > 0">
     <div class="container">
       <div class="add__inner">
         <div class="add__head">
@@ -40,7 +40,7 @@
       </div>
     </div>
   </section>
-  <section class="reviews" v-if="$store.state.reviews">
+  <section class="reviews" v-if="$store.state.reviews.length > 0">
     <div class="container">
       <div class="reviews__inner">
         <ul class="reviews__list">
@@ -57,7 +57,7 @@
                       <path d="M6.02957 0.33042C6.17764 -0.110141 6.82234 -0.110139 6.97041 0.330421L8.16576 3.88704C8.23197 4.08407 8.42189 4.21746 8.63617 4.21746H12.5044C12.9836 4.21746 13.1828 4.81024 12.7951 5.08252L9.66571 7.28064C9.4923 7.4024 9.41978 7.61824 9.48597 7.81526L10.6814 11.3719C10.8294 11.8125 10.3078 12.1788 9.92015 11.9065L6.79072 9.70845C6.61736 9.58661 6.38261 9.58661 6.20926 9.70845L3.0798 11.9065C2.69215 12.1788 2.17057 11.8125 2.31864 11.3719L3.51398 7.81526C3.5802 7.61824 3.50766 7.4024 3.3343 7.28064L0.204841 5.08252C-0.182806 4.81024 0.0164195 4.21746 0.495579 4.21746H4.36381C4.57809 4.21746 4.76801 4.08407 4.83422 3.88704L6.02957 0.33042Z" fill="#FFD353"/>
                     </svg>
                   </div>
-                  <div class="reviews__card__date">{{ review.date.split('T')[0] }}</div>
+                  <div class="reviews__card__date">{{ review.date }}</div>
                 </div>
               </div>
               <div class="reviews__card__body">

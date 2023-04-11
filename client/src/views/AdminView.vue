@@ -102,6 +102,7 @@ export default {
     },
     logout () {
       this.$store.state.user = undefined;
+      localStorage.clear()
     }
   }
 }

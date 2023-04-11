@@ -1,13 +1,13 @@
 <template>
-  <section class="gallery">
+  <section class="gallery" v-if="$store.state.gallery.length > 0">
     <div class="container">
       <div class="gallery__inner">
         <div class="gallery__head">
           <h2 class="gallery__title">Галерея</h2>
         </div>
         <div class="gallery__content">
-          <router-link to="/gallery" class="gallery__image" v-for="item of 6" :key="item">
-            <img src="../assets/static-images/gallery.png" alt="" class="img">
+          <router-link to="/gallery" class="gallery__image" v-for="photo of $store.state.gallery" :key="photo._id">
+            <img :src="'/static/gallery/' + photo.picture" alt="" class="img">
           </router-link>
         </div>
         <router-link class="gallery__link" to="/gallery">ПОКАЗАТЬ ЕЩЕ</router-link>
@@ -19,6 +19,9 @@
 <script>
 export default {
   name: "GalleryComponent",
+  mounted() {
+    this.$store.dispatch('get_gallery')
+  }
 }
 </script>
 
@@ -80,9 +83,6 @@ export default {
   }
   &__image {
     border-radius: 50px;
-    background-image: url('../assets/static-images/gallery.png');
-    background-repeat: no-repeat;
-    background-size: cover;
 
     &:nth-child(1) {
       grid-row-start: 1;
@@ -98,7 +98,6 @@ export default {
     }
 
     .img {
-      display: none;
       width: 100%;
       height: 100%;
       border-radius: 50px;

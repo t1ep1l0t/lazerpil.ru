@@ -327,6 +327,10 @@ export default {
     background-color: $blue;
     border-radius: 20px;
 
+    @media (max-width: 880px) {
+      display: none;
+    }
+
     &__name, &__price {
       font-weight: 700;
       font-size: 18px;

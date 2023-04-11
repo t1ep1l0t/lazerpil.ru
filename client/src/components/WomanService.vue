@@ -21,7 +21,7 @@
                    v-for="item of $store.state.complex"
                    :key="item._id"
               >
-                <img :src="'/pictures/complex/' + item.picture" alt="" class="complex__slide__img">
+                <img :src="'/static/complex/' + item.picture" alt="" class="complex__slide__img">
                 <h3 class="complex__slide__title">{{ item.name }}</h3>
                 <span class="complex__slide__desc">{{ item.desc }}</span>
                 <span class="complex__slide__price" v-if="item.price !== 'null'">{{ item.price + ' ₽' }} </span>
@@ -514,6 +514,10 @@ export default {
     justify-content: space-between;
     background-color: $rose_light;
     border-radius: 20px;
+
+    @media (max-width: 880px) {
+      display: none;
+    }
 
     &__name, &__price {
       font-weight: 700;

@@ -1,5 +1,5 @@
 <template>
-  <section class="map" v-if="$store.state.locations">
+  <section class="map" v-if="$store.state.locations.length > 0">
     <div class="container">
       <div class="map__inner">
         <yandex-map

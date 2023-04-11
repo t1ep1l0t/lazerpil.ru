@@ -220,7 +220,7 @@
             </div>
             <div class="equip__box">
               <div class="equip__picture">
-                <img src="../assets/static-images/equip-2.png" alt="" class="equip__img">
+                <img src="../assets/static-images/certificate.jpeg" alt="" class="equip__img" @click="show_certificate">
               </div>
               <div class="equip__info">
                 <span class="equip__name">
@@ -294,6 +294,9 @@ export default {
   methods: {
     set_controls () {
       this.video_controls = !this.video_controls
+    },
+    show_certificate () {
+      this.$store.commit('set_certificate')
     }
   }
 }
@@ -511,6 +514,10 @@ export default {
       order: 2;
     }
   }
+  &__img {
+    max-width: 252px;
+    height: auto;
+  }
   &__info {
     width: 100%;
     display: flex;
@@ -613,7 +620,8 @@ export default {
   }
   &__animated {
     position: sticky;
-    top: 90%;
+    z-index: 2;
+    top: 20%;
     left: 90%;
     width: 24px;
     animation: translate 2s linear infinite alternate;
