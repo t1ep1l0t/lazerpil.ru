@@ -157,7 +157,7 @@ class LocationController {
             const {metro, address, color, coords, path, del} = req.body;
             const id = req.params.id;
 
-            console.log(req.files , req.body)
+            console.log(req.files)
 
             const check_location = await LocationModel.findOne({_id: id});
             if(!check_location) {
