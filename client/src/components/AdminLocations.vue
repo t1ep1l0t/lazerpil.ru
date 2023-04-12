@@ -88,7 +88,7 @@
             <span class="locations__text">
               Вход
             </span>
-            <input type="file" :ref="location._id + 1" >
+            <input type="file" :ref="location._id + 'entrance'" >
             <ul class="locations__dir__list" v-if="location.entrance.length > 0">
               <li class="locations__dir__item"
                   v-for="(img, index) of location.entrance"
@@ -106,7 +106,7 @@
             <span class="locations__text">
               Оборудование
             </span>
-            <input type="file" ref="location_update_equip">
+            <input type="file" :ref="location._id + 'equip'">
             <ul class="locations__dir__list" v-if="location.equip.length > 0">
               <li class="locations__dir__item"
                   v-for="(img, index) of location.equip"
@@ -124,7 +124,7 @@
             <span class="locations__text">
               Интерьер
             </span>
-            <input type="file" ref="location_update_interior">
+            <input type="file" :ref="location._id + 'interior'">
             <ul class="locations__dir__list" v-if="location.interior.length > 0">
               <li class="locations__dir__item"
                   v-for="(img, index) of location.interior"
@@ -142,7 +142,7 @@
             <span class="locations__text">
               Результат
             </span>
-            <input type="file" ref="location_update_result">
+            <input type="file" :ref="location._id + 'result'">
             <ul class="locations__dir__list" v-if="location.result.length > 0">
               <li class="locations__dir__item"
                   v-for="(img, index) of location.result"
@@ -160,7 +160,7 @@
             <span class="locations__text">
               Услуги
             </span>
-            <input type="file" ref="location_update_service">
+            <input type="file" :ref="location._id + 'service'">
             <ul class="locations__dir__list" v-if="location.service.length > 0">
               <li class="locations__dir__item"
                   v-for="(img, index) of location.service"
@@ -258,14 +258,11 @@ export default {
       }
     },
     async update (item) {
-      this.location_update_service = this.$refs.location_update_service[0].files[0];
-      this.location_update_result = this.$refs.location_update_result[0].files[0];
-      this.location_update_interior = this.$refs.location_update_interior[0].files[0];
-      this.location_update_equip = this.$refs.location_update_equip[0].files[0];
-      this.location_update_entrance = this.$refs[item._id + 1][0].files[0];
-
-      console.log(this.$refs);
-      console.log(this.location_update_entrance);
+      this.location_update_service = this.$refs[item._id + 'service'][0].files[0];
+      this.location_update_result = this.$refs[item._id + 'result'][0].files[0];
+      this.location_update_interior = this.$refs[item._id + 'interior'][0].files[0];
+      this.location_update_equip = this.$refs[item._id + 'equip'][0].files[0];
+      this.location_update_entrance = this.$refs[item._id + 'entrance'][0].files[0];
 
 
       const form_data = new FormData();
