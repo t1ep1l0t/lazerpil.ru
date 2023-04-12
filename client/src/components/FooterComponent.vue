@@ -48,6 +48,9 @@
           <a href="tel:+78002200022" class="footer__text">8 (800) 22-000-22 </a>
         </div>
       </div>
+      <div class="footer__copy">
+        &#169; 2023 Все права защищены | OOO "Moscow Lazerepil"
+      </div>
     </div>
   </footer>
 </template>
@@ -187,6 +190,9 @@ export default {
       font-size: 16px;
       line-height: 28px;
     }
-
+    &__copy {
+      margin-top: 20px;
+      font-size: 16px;
+    }
   }
 </style>
