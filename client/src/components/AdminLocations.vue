@@ -75,10 +75,10 @@
           Цвет: {{ location.color }} <input class="add_input" type="text" v-model="location.color">
         </span>
         <span class="add__label">
-          Координата А: {{ location.coords[0].split(',')[0] }} <input class="add_input" type="text" v-model="coords[0]">
+          Координата А: {{ location.coords[0] }} <input class="add_input" type="text" v-model="location.coords[0]">
         </span>
         <span class="add__label">
-          Координата Б: {{ location.coords[0].split(',')[1] }} <input class="add_input" type="text" v-model="coords[1]">
+          Координата Б: {{ location.coords[1] }} <input class="add_input" type="text" v-model="location.coords[1]">
         </span>
         <span class="add__label">
           Ссылка: {{ location.path }} <input class="add_input" type="text" v-model="location.path">
@@ -220,7 +220,7 @@ export default {
       form_data.append("address", this.address);
       form_data.append("color", this.color);
       form_data.append("path", this.path);
-      form_data.append("coords", this.coords);
+      form_data.append("coords", JSON.parse(this.coords));
       form_data.append("entrance", this.location_entrance);
       form_data.append("interior", this.location_interior);
       form_data.append("equip", this.location_equip);
@@ -271,7 +271,7 @@ export default {
       form_data.append("address", item.address);
       form_data.append("color", item.color);
       form_data.append("path", item.path);
-      form_data.append("coords", this.coords);
+      form_data.append("coords", JSON.stringify(item.coords));
       form_data.append("entrance", this.location_update_entrance);
       form_data.append("interior", this.location_update_interior);
       form_data.append("equip", this.location_update_equip);

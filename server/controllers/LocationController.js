@@ -5,6 +5,8 @@ class LocationController {
     async add_one (req, res) {
         try {
             const {metro, address, color, coords, path} = req.body;
+            console.log(coords)
+            console.log(JSON.stringify(coords))
 
             const check_address = await LocationModel.findOne({address: address});
             if(check_address) {
@@ -167,7 +169,7 @@ class LocationController {
             if (!req.files) {
                 await LocationModel.findByIdAndUpdate(
                     id,
-                    {metro, address, color, coords, path},
+                    {metro, address, color, coords: JSON.parse(coords), path},
                     {new: true}
                 );
 
@@ -321,7 +323,7 @@ class LocationController {
 
             const updated = await LocationModel.findByIdAndUpdate(
                 id,
-                {metro, address, color, coords, path},
+                {metro, address, color, coords: JSON.parse(coords), path},
                 {new: true}
             )
 

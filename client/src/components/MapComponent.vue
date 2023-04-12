@@ -53,6 +53,11 @@ export default {
   },
   mounted () {
     this.$store.dispatch('get_locations');
+
+    const locations = this.$store.state.locations;
+    locations.forEach(location => {
+      console.log(location.coords)
+    })
   }
 }
 </script>
