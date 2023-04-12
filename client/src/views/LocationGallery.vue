@@ -6,7 +6,7 @@
           <h1 class="top__title">ФОТО ЛОКАЦИИ</h1>
           <div class="top__location">
             <span class="metro"
-                  :style="{color: this.$store.state.location.color}"
+                  :style="{'color': $store.state.location.color}"
             >
               <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M32.592 20.6473L24.416 0L17.5 12.0698L10.612 0L2.408 20.6473H0V23.7765H12.376V20.6473H10.528L12.32 15.5064L17.5 24L22.68 15.5064L24.472 20.6473H22.624V23.7765H35V20.6473H32.592Z" :fill="location.color"/>
