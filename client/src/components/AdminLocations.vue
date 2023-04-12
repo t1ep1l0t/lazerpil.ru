@@ -264,9 +264,8 @@ export default {
       this.location_update_equip = this.$refs.location_update_equip[0].files[0];
       this.location_update_entrance = this.$refs.location_entrance + item._id[0].files[0];
 
-      console.log(this.$refs.location_update_entrance);
+      console.log(this.$refs);
       console.log(this.location_update_entrance);
-      console.log(this.$refs.location_update_entrance[0].files[0]);
 
 
       const form_data = new FormData();
