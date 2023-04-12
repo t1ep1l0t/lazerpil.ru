@@ -124,7 +124,7 @@ export default {
   props: ['id'],
   data() {
     return {
-      location: undefined,
+      location: [],
     }
   },
   methods: {
