@@ -1,5 +1,5 @@
 <template>
-  <div id="galley_location" v-if="location.length > 0">
+  <div id="galley_location" v-if="$store.state.location.length > 0">
     <section class="top">
       <div class="container">
         <div class="top__head">
@@ -26,10 +26,10 @@
           <div class="photos__head">
             <h2 class="photos__title">услуги</h2>
           </div>
-          <div class="photos__content" v-if="location.service.length > 0">
+          <div class="photos__content" v-if="$store.state.location.service.length > 0">
             <img class="photos__img"
                  :src="`/static/service/${image}`"
-                 v-for="(image, index) of location.service"
+                 v-for="(image, index) of $store.state.location.service"
                  :key="image + index"
             >
           </div>
@@ -45,10 +45,10 @@
           <div class="photos__head">
             <h2 class="photos__title">результат</h2>
           </div>
-          <div class="photos__content" v-if="location.result.length > 0">
+          <div class="photos__content" v-if="$store.state.location.result.length > 0">
             <img class="photos__img"
                  :src="`/static/result/${image}`"
-                 v-for="(image, index) of location.result"
+                 v-for="(image, index) of $store.state.location.result"
                  :key="image + index"
             >
           </div>
@@ -64,10 +64,10 @@
           <div class="photos__head">
             <h2 class="photos__title">оборудование</h2>
           </div>
-          <div class="photos__content" v-if="location.equip.length > 0">
+          <div class="photos__content" v-if="$store.state.location.equip.length > 0">
             <img class="photos__img"
                  :src="`/static/equip/${image}`"
-                 v-for="(image, index) of location.equip"
+                 v-for="(image, index) of $store.state.location.equip"
                  :key="image + index"
             >
           </div>
@@ -83,10 +83,10 @@
           <div class="photos__head">
             <h2 class="photos__title">интерьер</h2>
           </div>
-          <div class="photos__content" v-if="location.interior.length > 0">
+          <div class="photos__content" v-if="$store.state.location.interior.length > 0">
             <img class="photos__img"
                  :src="`/static/interior/${image}`"
-                 v-for="(image, index) of location.interior"
+                 v-for="(image, index) of $store.state.location.interior"
                  :key="image + index"
             >
           </div>
@@ -102,10 +102,10 @@
           <div class="photos__head">
             <h2 class="photos__title">вход</h2>
           </div>
-          <div class="photos__content" v-if="location.entrance.length > 0">
+          <div class="photos__content" v-if="$store.state.location.entrance.length > 0">
             <img class="photos__img"
                  :src="`/static/entrance/${image}`"
-                 v-for="(image, index) of location.entrance"
+                 v-for="(image, index) of $store.state.location.entrance"
                  :key="image + index"
             >
           </div>
@@ -127,15 +127,11 @@ export default {
       location: [],
     }
   },
-  methods: {
-    async get_location_from_id () {
-      const id = window.location.href.split('/')[4];
-      const response = await fetch(`/api/locations/get/${id}`);
-      this.location = await response.json();
-    }
-  },
   mounted() {
-    this.get_location_from_id();
+    this.$store.dispatch('get_location');
+    setTimeout(() => {
+      console.log(this.$store.state.location)
+    }, 1000)
   }
 }
 </script>

@@ -18,6 +18,7 @@ const store = new Vuex.Store({
         locations: [],
         reviews: [],
         gallery: [],
+        location: []
     },
     mutations: {
         set_menu (state) {
@@ -48,6 +49,9 @@ const store = new Vuex.Store({
         },
         set_locations(state, payload) {
             state.locations = payload;
+        },
+        set_location(state, payload) {
+            state.location = payload;
         },
         set_reviews(state, payload) {
             state.reviews = payload.reverse();
@@ -110,6 +114,12 @@ const store = new Vuex.Store({
 
             }
         },
+        async get_location () {
+            const id = window.location.href.split('/')[4];
+            const response = await fetch(`/api/locations/get/${id}`);
+            const result = await response.json();
+            this.commit('set_location', result);
+        }
 
     }
 })
