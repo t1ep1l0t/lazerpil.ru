@@ -124,9 +124,7 @@ export default {
   props: ['id'],
   mounted() {
     this.$store.dispatch('get_location');
-    setTimeout(() => {
-      console.log(this.$store.state.location)
-    }, 1000)
+    document.title = `Moscow Lazerepil | Галлерея | ${this.$store.state.location.metro}`
   }
 }
 </script>

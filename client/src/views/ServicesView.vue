@@ -58,7 +58,10 @@ import WomanService from "@/components/WomanService.vue";
 
 export default {
   name: "ServicesView",
-  components: {WomanService, ManService}
+  components: {WomanService, ManService},
+  mounted() {
+    document.title = 'Moscow Lazerepil | Услуги'
+  }
 }
 </script>
 

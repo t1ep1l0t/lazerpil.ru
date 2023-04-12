@@ -38,6 +38,7 @@ export default {
   name: "GalleryView",
   mounted() {
     this.$store.dispatch('get_locations');
+    document.title = 'Moscow Lazerepil | Галлерея'
   }
 }
 </script>

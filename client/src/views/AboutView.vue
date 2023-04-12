@@ -298,6 +298,9 @@ export default {
     show_certificate () {
       this.$store.commit('set_certificate')
     }
+  },
+  mounted() {
+    document.title = 'Moscow Lazerepil | О Нас'
   }
 }
 </script>

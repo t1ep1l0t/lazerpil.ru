@@ -79,6 +79,7 @@ export default {
   mounted () {
     this.$store.dispatch('get_reviews');
     this.$store.dispatch('get_locations');
+    document.title = 'Moscow Lazerepil | Отзывы'
   }
 }
 </script>

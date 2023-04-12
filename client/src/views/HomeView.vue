@@ -153,6 +153,7 @@ export default {
   },
   mounted () {
     this.$store.dispatch('get_popular');
+    document.title = 'Moscow Lazerepil'
   }
 }
 </script>

@@ -104,6 +104,9 @@ export default {
       this.$store.state.user = undefined;
       localStorage.clear()
     }
+  },
+  mounted() {
+    document.title = 'Moscow Lazerepil | Администрация'
   }
 }
 </script>

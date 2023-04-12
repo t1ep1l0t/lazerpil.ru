@@ -68,6 +68,9 @@ export default {
         },
       ]
     }
+  },
+  mounted() {
+    document.title = 'Moscow Lazerepil | Контакты'
   }
 }
 </script>
