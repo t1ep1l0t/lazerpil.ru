@@ -1,5 +1,5 @@
 <template>
-  <div id="galley_location" v-if="$store.state.location.length > 0">
+  <div id="galley_location" v-if="$store.state.location">
     <section class="top">
       <div class="container">
         <div class="top__head">
@@ -129,9 +129,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch('get_location');
-    setTimeout(() => {
-      console.log(this.$store.state.location)
-    }, 1000)
   }
 }
 </script>
