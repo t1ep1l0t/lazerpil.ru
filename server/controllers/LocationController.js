@@ -5,8 +5,6 @@ class LocationController {
     async add_one (req, res) {
         try {
             const {metro, address, color, coords, path} = req.body;
-            console.log(coords)
-            console.log(JSON.stringify(coords))
 
             const check_address = await LocationModel.findOne({address: address});
             if(check_address) {
@@ -27,7 +25,7 @@ class LocationController {
                     metro: metro,
                     address: address,
                     color: color,
-                    coords: coords,
+                    coords: JSON.parse(coords),
                     path: path,
                     entrance: [],
                     equip: [],
@@ -103,7 +101,7 @@ class LocationController {
                 metro,
                 address,
                 color,
-                coords,
+                coords: JSON.parse(coords),
                 path,
                 entrance: entrance_picture,
                 equip: equip_picture,
@@ -158,6 +156,8 @@ class LocationController {
         try {
             const {metro, address, color, coords, path, del} = req.body;
             const id = req.params.id;
+
+            console.log(req.files)
 
             const check_location = await LocationModel.findOne({_id: id});
             if(!check_location) {
