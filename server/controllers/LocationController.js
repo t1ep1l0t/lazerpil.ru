@@ -167,6 +167,7 @@ class LocationController {
             }
 
             if (!req.files) {
+                console.log(req.body)
                 await LocationModel.findByIdAndUpdate(
                     id,
                     {metro, address, color, coords: JSON.parse(coords), path},
