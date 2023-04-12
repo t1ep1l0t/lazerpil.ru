@@ -340,6 +340,9 @@ export default {
   },
   mounted() {
     this.$store.dispatch('get_locations')
+    setTimeout(() => {
+      console.log(this.$store.state.locations)
+    }, 2000)
   }
 }
 </script>
