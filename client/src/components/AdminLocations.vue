@@ -291,7 +291,6 @@ export default {
     },
     async delete_photo (img, item) {
       this.deleted = [];
-      console.log(this.deleted)
 
       let name;
       this.$store.state.locations.forEach(location => {

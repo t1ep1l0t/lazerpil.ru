@@ -7,7 +7,7 @@
             <h1 class="gallery__title">ГАЛЕРЕЯ</h1>
             <h2 class="gallery__subtitle">Выберете нужную локацию</h2>
           </div>
-          <div class="gallery__content" v-if="$store.state.locations > 0">
+          <div class="gallery__content" v-if="$store.state.locations.length > 0">
             <router-link class="gallery__location"
                          :to="`/gallery/${location._id}`"
                          v-for="location of $store.state.locations"
