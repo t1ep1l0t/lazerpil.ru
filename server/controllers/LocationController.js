@@ -169,7 +169,7 @@ class LocationController {
             if (!req.files) {
                 await LocationModel.findByIdAndUpdate(
                     id,
-                    {metro, address, color, coords: JSON.parse(coords), path},
+                    {metro, address, color, coords: coords, path},
                     {new: true}
                 );
 
@@ -323,7 +323,7 @@ class LocationController {
 
             const updated = await LocationModel.findByIdAndUpdate(
                 id,
-                {metro, address, color, coords: JSON.parse(coords), path},
+                {metro, address, color, coords: coords, path},
                 {new: true}
             )
 
