@@ -59,7 +59,7 @@ const store = new Vuex.Store({
         },
         set_gallery(state, payload) {
             state.gallery = payload;
-        },
+        }
     },
     actions: {
         async get_popular () {
@@ -109,7 +109,8 @@ const store = new Vuex.Store({
                 })
 
             }
-        }
+        },
+
     }
 })
 

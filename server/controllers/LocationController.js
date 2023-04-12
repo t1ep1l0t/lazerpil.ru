@@ -102,6 +102,7 @@ class LocationController {
                 address,
                 color,
                 coords,
+                path,
                 entrance: entrance_picture,
                 equip: equip_picture,
                 interior: interior_picture,
@@ -153,7 +154,7 @@ class LocationController {
     }
     async update_one (req, res) {
         try {
-            const {metro, address, color, coords, path, deleted} = req.body;
+            const {metro, address, color, coords, path, del} = req.body;
             const id = req.params.id;
 
             const check_location = await LocationModel.findOne({_id: id});
@@ -170,12 +171,13 @@ class LocationController {
                     {new: true}
                 );
 
-                if (!deleted) {
+                if (!del) {
                     return res.status(201).json({
                         message: 'Локация успешно обновлена.'
                     })
                 }
-                deleted.forEach(item => {
+                const deleted = JSON.parse(del);
+                for (let item of deleted) {
                     if (item.dir === 'entrance') {
                         LocationFileService.deleteFile(`../client/static/entrance/${item.name}`);
                         const arr = check_location.entrance.filter(name => name !== item.name);
@@ -201,7 +203,7 @@ class LocationController {
                         const arr = check_location.service.filter(name => name !== item.name);
                         check_location.service = arr;
                     }
-                })
+                }
 
                 await check_location.save();
 
@@ -290,7 +292,9 @@ class LocationController {
                 }
             }
 
-            if (deleted) {
+            if (del) {
+                const deleted = JSON.parse(del);
+
                 if (deleted.dir === 'entrance') {
                     LocationFileService.deleteFile(`../client/static/entrance/${deleted.name}`);
                     check_location.entrance.filter(name => name !== deleted.name);

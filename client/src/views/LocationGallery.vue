@@ -1,5 +1,5 @@
 <template>
-  <div id="galley_location" v-if="location">
+  <div id="galley_location" v-if="location.length > 0">
     <section class="top">
       <div class="container">
         <div class="top__head">
