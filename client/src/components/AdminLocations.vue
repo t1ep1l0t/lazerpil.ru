@@ -271,7 +271,7 @@ export default {
       form_data.append("address", item.address);
       form_data.append("color", item.color);
       form_data.append("path", item.path);
-      form_data.append("coords", item.coords);
+      form_data.append("coords", JSON.stringify(item.coords));
       form_data.append("entrance", this.location_update_entrance);
       form_data.append("interior", this.location_update_interior);
       form_data.append("equip", this.location_update_equip);
