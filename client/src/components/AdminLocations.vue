@@ -88,7 +88,7 @@
             <span class="locations__text">
               Вход
             </span>
-            <input type="file" :ref="'location_entrance_' + location._id" >
+            <input type="file" :ref="location._id + 1" >
             <ul class="locations__dir__list" v-if="location.entrance.length > 0">
               <li class="locations__dir__item"
                   v-for="(img, index) of location.entrance"
@@ -262,7 +262,7 @@ export default {
       this.location_update_result = this.$refs.location_update_result[0].files[0];
       this.location_update_interior = this.$refs.location_update_interior[0].files[0];
       this.location_update_equip = this.$refs.location_update_equip[0].files[0];
-      this.location_update_entrance = this.$refs.location_entrance + item._id[0].files[0];
+      this.location_update_entrance = this.$refs[item._id + 1][0].files[0];
 
       console.log(this.$refs);
       console.log(this.location_update_entrance);
