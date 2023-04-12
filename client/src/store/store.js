@@ -18,7 +18,7 @@ const store = new Vuex.Store({
         locations: [],
         reviews: [],
         gallery: [],
-        location: []
+        location: undefined
     },
     mutations: {
         set_menu (state) {
