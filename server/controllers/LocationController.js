@@ -324,7 +324,7 @@ class LocationController {
 
             const updated = await LocationModel.findByIdAndUpdate(
                 id,
-                {metro, address, color, coords: JSON.parse(coords), path},
+                {metro, address, color, coords: coords ? JSON.parse(coords) : coords, path},
                 {new: true}
             )
 
