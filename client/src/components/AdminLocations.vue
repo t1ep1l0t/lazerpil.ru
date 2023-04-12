@@ -264,6 +264,9 @@ export default {
       this.location_update_equip = this.$refs.location_update_equip[0].files[0];
       this.location_update_entrance = this.$refs.location_update_entrance[0].files[0];
 
+      console.log(this.location_update_entrance);
+      console.log(this.$refs.location_update_entrance[0].files[0]);
+
 
       const form_data = new FormData();
 
@@ -340,9 +343,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch('get_locations')
-    setTimeout(() => {
-      console.log(this.$store.state.locations)
-    }, 2000)
   }
 }
 </script>
