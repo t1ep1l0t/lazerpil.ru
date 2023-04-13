@@ -45,7 +45,7 @@ const store = new Vuex.Store({
             state.complex = payload
         },
         set_faqs (state, payload) {
-            state.faqs = payload.reverse()
+            state.faqs = payload
         },
         set_locations(state, payload) {
             state.locations = payload;
