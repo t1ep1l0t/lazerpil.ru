@@ -39,7 +39,7 @@
                       {{ string }}
                     </li>
                   </ul>
-                  <img src="../assets/static-images/faq-picture.png" alt="" class="faq__img" v-if="item.type === 'picture'">
+                  <img :src="item.value" alt="" class="faq__img" v-if="item.type === 'picture'">
                 </div>
               </v-expansion-panel-content>
             </v-expansion-panel>
