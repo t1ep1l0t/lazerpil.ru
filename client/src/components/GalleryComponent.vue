@@ -62,6 +62,7 @@ export default {
     }
   }
   &__content {
+    max-width: 620px;
     width: 100%;
     height: fit-content;
     display: flex;
