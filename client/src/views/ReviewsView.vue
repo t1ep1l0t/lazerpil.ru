@@ -140,7 +140,7 @@ export default {
     &__inner {
       display: flex;
       align-items: center;
-      line-grid-progression: 30px;
+      gap: 30px;
     }
     &__count {
       font-size: 42px;
