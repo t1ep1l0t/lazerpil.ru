@@ -36,143 +36,201 @@
 </template>
 
 <script>
+import kontyr_borody from '../assets/man-service/Контур бороды.png';
+import zone_mez_brovy from '../assets/man-service/Зона между бровей.jpg';
+import sheky from '../assets/man-service/Щёки.png';
+import yshi_rak from '../assets/man-service/Ушные раковины.png';
+import nose_paz from '../assets/man-service/Носовые пазухи.png';
+import zone_sheya_pered from '../assets/man-service/зона шеи спереди.png';
+import plechy from '../assets/man-service/плечи.jpg';
+import kisty from '../assets/man-service/Кисти.jpg';
+import fing_hand from '../assets/man-service/Пальцы рук.jpg';
+import hands_all from '../assets/man-service/руки.jpg';
+import hands_half from '../assets/man-service/Руки до локтя.jpg';
+import podmyshky from '../assets/man-service/подмышечные впадины.png';
+import grudy from '../assets/man-service/Грудь.jpg';
+import oreols from '../assets/man-service/ореолы.png';
+import white_line from '../assets/man-service/Белая линия живота.jpg';
+import zivot from '../assets/man-service/живот.jpg';
+import bedra from '../assets/man-service/бедра.png';
+import koleny from '../assets/man-service/колени.png';
+import goleny_and_coleny from '../assets/man-service/голени  включая колени.png';
+import podyem_foots from '../assets/man-service/подъёмы на ногах.jpg';
+import fing_foots from '../assets/man-service/пальцы ног.png';
+import foots_all from '../assets/man-service/ноги полностью.jpg';
+import dheya_back from '../assets/man-service/шея сзади.png';
+import vorotnyk_back from '../assets/man-service/воротниковая зона сзади.png';
+import spina_all from '../assets/man-service/спина полностью.jpg';
+import krest_obl from '../assets/man-service/крестцовая область.png';
+import poyas from '../assets/man-service/поясница.jpg';
 export default {
   name: "ManService",
   data () {
     return {
       services: [
         {
-          name: 'носовые пазухи',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Контур бороды',
+          price: 2400,
+          picture: kontyr_borody,
           active: true
         },
         {
-          name: 'ушные раковины',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Зона между бровями',
+          price: 500,
+          picture: zone_mez_brovy,
           active: false
         },
         {
-          name: 'зона вокруг ореолов',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Щёки',
+          price: 800,
+          picture: sheky,
           active: false
         },
         {
-          name: 'белая линия живота',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Ушные раковины',
+          price: 1000,
+          picture: yshi_rak,
           active: false
         },
         {
-          name: 'бикини тотальное',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Носовые пазухи',
+          price: 1000,
+          picture: nose_paz,
           active: false
         },
         {
-          name: 'бикини классика',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Шея спереди',
+          price: 800,
+          picture: zone_sheya_pered,
           active: false
         },
         {
-          name: 'ягодицы',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Плечи',
+          price: 1000,
+          picture: plechy,
           active: false
         },
         {
-          name: 'подмышечные впадины',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Кисти',
+          price: 800,
+          picture: kisty,
           active: false
         },
         {
-          name: 'ноги полностью',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Пальцы на руках',
+          price: 400,
+          picture: fing_hand,
           active: false
         },
         {
-          name: 'голени',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Руки полностью',
+          price: 2300,
+          picture: hands_all,
           active: false
         },
         {
-          name: 'бёдра',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Руки до локтя',
+          price: 1900,
+          picture: hands_half,
           active: false
         },
         {
-          name: 'колени',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Подмышечные впадины',
+          price: 800,
+          picture: podmyshky,
           active: false
         },
         {
-          name: 'подъёмы на ногах',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Грудь',
+          price: 1200,
+          picture: grudy,
           active: false
         },
         {
-          name: 'пальчики на ногах',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Ореолы',
+          price: 400,
+          picture: oreols,
           active: false
         },
         {
-          name: 'руки полностью',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Белая линия живота',
+          price: 800,
+          picture: white_line,
           active: false
         },
         {
-          name: 'руки до локтя',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Живот',
+          price: 1600,
+          picture: zivot,
           active: false
         },
         {
-          name: 'кисти',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Бёдра',
+          price: 2000,
+          picture: bedra,
           active: false
         },
         {
-          name: 'пальчики на руках',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Колени',
+          price: 400,
+          picture: koleny,
           active: false
         },
         {
-          name: 'лицо 1 зона',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Голени включая колени',
+          price: 2000,
+          picture: goleny_and_coleny,
           active: false
         },
         {
-          name: 'живот',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Подъёмы ног',
+          price: 800,
+          picture: podyem_foots,
           active: false
         },
         {
-          name: 'поясница',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Пальцы ног',
+          price: 400,
+          picture: fing_foots,
           active: false
         },
         {
-          name: 'Грудь ( декольте)',
-          price: 3800,
-          picture: 'https://i.ibb.co/BrDSkt7/Frame-738001536.png',
+          name: 'Ноги полностью',
+          price: 3000,
+          picture: foots_all,
           active: false
         },
+        {
+          name: 'Шея сзади',
+          price: 800,
+          picture: dheya_back,
+          active: false
+        },
+        {
+          name: 'Вротниковая зона сзади',
+          price: 1800,
+          picture: vorotnyk_back,
+          active: false
+        },
+        {
+          name: 'Спина полностью',
+          price: 3600,
+          picture: spina_all,
+          active: false
+        },
+        {
+          name: 'Крестцовая часть',
+          price: 800,
+          picture: krest_obl,
+          active: false
+        },
+        {
+          name: 'Поясничная область',
+          price: 1200,
+          picture: poyas,
+          active: false
+        },
+
       ],
       active_item: undefined,
     }

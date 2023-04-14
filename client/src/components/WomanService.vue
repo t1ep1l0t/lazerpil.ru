@@ -75,6 +75,29 @@ import VueSlickCarousel from "vue-slick-carousel";
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
+import white_line from '../assets/woman-sevice/белая линия живота.jpg'
+import biс_classic from '../assets/woman-sevice/Бикини классика.png'
+import bic_total from '../assets/woman-sevice/Бикини тотальное.jpg'
+import bedra from '../assets/woman-sevice/Бёдра.png'
+import goleny from '../assets/woman-sevice/голени.jpg'
+import decolte from '../assets/woman-sevice/Грудь декольте.png'
+import zhivot from '../assets/woman-sevice/живот.jpg'
+import zone_near_oreol from '../assets/woman-sevice/зона вокруг ореолов.jpg'
+import kisty from '../assets/woman-sevice/кисти.jpg'
+import coleny from '../assets/woman-sevice/колени .jpg'
+import face__all from '../assets/woman-sevice/лицо полностью.jpg'
+import foots_all from '../assets/woman-sevice/ноги полностью.jpg'
+import nose_pas from '../assets/woman-sevice/носовые пазухи.jpg'
+import fing_foot from '../assets/woman-sevice/пальчики на ногах.jpg'
+import fing_hand from '../assets/woman-sevice/пальчики на руках.jpg'
+import podm_vpad from '../assets/woman-sevice/подмышечные впадины.png'
+import podem_foots from '../assets/woman-sevice/подъёмы на ногах.jpg'
+import poyas from '../assets/woman-sevice/поясница.jpg'
+
+import hands_half from '../assets/woman-sevice/руки до локтя.png'
+import hands_all from '../assets/woman-sevice/руки полностью.png'
+import ears from '../assets/woman-sevice/Ушные раковины.jpg'
+import ass from '../assets/woman-sevice/ягодицы2.jpg'
 export default {
   name: "WomanService",
   components: {
@@ -113,135 +136,141 @@ export default {
       },
       services: [
         {
-          name: 'носовые пазухи',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Белая линия живота',
+          price: 500,
+          picture: white_line,
           active: true
         },
         {
-          name: 'ушные раковины',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Бикини классика',
+          price: 1400,
+          picture: biс_classic,
           active: false
         },
         {
-          name: 'зона вокруг ореолов',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Бикини тотальное',
+          price: 2000,
+          picture: bic_total,
           active: false
         },
         {
-          name: 'белая линия живота',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Бёдра',
+          price: 1700,
+          picture: bedra,
           active: false
         },
         {
-          name: 'бикини тотальное',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Голени',
+          price: 1500,
+          picture: goleny,
           active: false
         },
         {
-          name: 'бикини классика',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Грудь декольте',
+          price: 900,
+          picture: decolte,
           active: false
         },
         {
-          name: 'ягодицы',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Живот',
+          price: 1100,
+          picture: zhivot,
           active: false
         },
         {
-          name: 'подмышечные впадины',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Зона вокруг ореолов',
+          price: 500,
+          picture: zone_near_oreol,
           active: false
         },
         {
-          name: 'ноги полностью',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Кисти',
+          price: 500,
+          picture: kisty,
           active: false
         },
         {
-          name: 'голени',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Колени',
+          price: 500,
+          picture: coleny,
           active: false
         },
         {
-          name: 'бёдра',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Лицо полностью',
+          price: 2000,
+          picture: face__all,
           active: false
         },
         {
-          name: 'колени',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Лицо 1 зона',
+          price: 500,
+          picture: face__all,
           active: false
         },
         {
-          name: 'подъёмы на ногах',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Ноги полностью',
+          price: 2300,
+          picture: foots_all,
           active: false
         },
         {
-          name: 'пальчики на ногах',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Носовые пазухи',
+          price: 1000,
+          picture: nose_pas,
           active: false
         },
         {
-          name: 'руки полностью',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Пальчики на ногах',
+          price: 300,
+          picture: fing_foot,
           active: false
         },
         {
-          name: 'руки до локтя',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Пальчики на руках',
+          price: 300,
+          picture: fing_hand,
           active: false
         },
         {
-          name: 'кисти',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Подмышечные впадины',
+          price: 1000,
+          picture: podm_vpad,
           active: false
         },
         {
-          name: 'пальчики на руках',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Подъёмы на ногах',
+          price: 800,
+          picture: podem_foots,
           active: false
         },
         {
-          name: 'лицо 1 зона',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Поясница',
+          price: 900,
+          picture: poyas,
           active: false
         },
         {
-          name: 'живот',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Руки до локтя',
+          price: 1200,
+          picture: hands_half,
           active: false
         },
         {
-          name: 'поясница',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Руки полностью',
+          price: 1700,
+          picture: hands_all,
           active: false
         },
         {
-          name: 'Грудь ( декольте)',
-          price: 3800,
-          picture: 'https://i.ibb.co/wJz8vgx/Frame-738001536.png',
+          name: 'Ушные раковины',
+          price: 1000,
+          picture: ears,
+          active: false
+        },
+        {
+          name: 'Ягодицы',
+          price: 1200,
+          picture: ass,
           active: false
         },
       ],
