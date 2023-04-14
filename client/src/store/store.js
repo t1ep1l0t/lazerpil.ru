@@ -62,9 +62,7 @@ const store = new Vuex.Store({
             state.reviews.forEach(review => {
                 count__arr.push(review.count)
             })
-            console.log(count__arr)
-            state.reviews_summary = count__arr.reduce((a, b) => (a + b)) / count__arr.length;
-            console.log(state.reviews_summary)
+            state.reviews_summary = count__arr.reduce((a, b) => (a + b)) / count__arr.length.toFixed(1);
         },
         set_user(state, payload) {
             state.user = payload.bool;
