@@ -212,8 +212,9 @@ export default {
   }
   &__img {
     max-width: 386px;
-    width: 100%;
+    width: auto;
     height: auto;
+    max-height: 400px;
     border-radius: 50px;
   }
 }
