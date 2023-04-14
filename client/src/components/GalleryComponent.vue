@@ -74,9 +74,8 @@ export default {
     border-radius: 50px;
 
     .img {
-      max-width: 400px;
-      width: 100%;
-      height: auto;
+      max-height: 300px;
+      width: auto;
       border-radius: 50px;
     }
   }
