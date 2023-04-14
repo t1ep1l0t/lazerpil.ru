@@ -62,7 +62,8 @@ const store = new Vuex.Store({
             state.reviews.forEach(review => {
                 count__arr.push(review.count)
             })
-            state.reviews_summary = count__arr.reduce((a, b) => (a + b)) / count__arr.length.toFixed(2);
+            state.reviews_summary = count__arr.reduce((a, b) => (a + b)) / count__arr.length;
+            state.reviews_summary.toFixed(2)
 
             console.log(state.reviews_summary)
         },
