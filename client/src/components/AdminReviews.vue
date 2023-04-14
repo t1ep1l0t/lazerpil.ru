@@ -117,7 +117,6 @@ export default {
         path: item.path,
         date: item.date
       };
-      console.log(data)
 
       const response = await fetch(`/api/reviews/update/${item._id}`, {
         method: 'PUT',
