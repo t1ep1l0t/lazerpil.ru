@@ -17,7 +17,7 @@ const store = new Vuex.Store({
         faqs: [],
         locations: [],
         reviews: [],
-        reviews_summary: undefined,
+        reviews_summary: 0,
         gallery: [],
         location: undefined
     },
@@ -63,6 +63,8 @@ const store = new Vuex.Store({
                 count__arr.push(review.count)
             })
             state.reviews_summary = count__arr.reduce((a, b) => (a + b)) / count__arr.length.toFixed(1);
+
+            console.log(state.reviews_summary)
         },
         set_user(state, payload) {
             state.user = payload.bool;
