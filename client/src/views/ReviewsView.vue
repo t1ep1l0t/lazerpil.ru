@@ -83,23 +83,10 @@
 <script>
 export default {
   name: "ReviewsView",
-  methods: {
-    math_status () {
-      const reviews = this.$store.state.reviews;
-      const count__arr = [];
-
-      reviews.forEach(review => {
-        count__arr.push(review.count)
-      })
-
-      console.log(count__arr)
-    }
-  },
   mounted () {
     this.$store.dispatch('get_reviews');
     this.$store.dispatch('get_locations');
     document.title = 'Moscow Lazerepil | Отзывы'
-    this.math_status();
   }
 }
 </script>
