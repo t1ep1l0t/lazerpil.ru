@@ -135,7 +135,7 @@ export default {
   }
   .status {
     width: 100%;
-    padding: 50px 0;
+    padding: 50px 0 0;
 
     &__inner {
       display: flex;
