@@ -217,6 +217,8 @@ export default {
     justify-content: center;
 
     .img {
+      max-width: 100%;
+      height: auto;
       width: auto;
       max-height: 350px;
       border-radius: 30px;
