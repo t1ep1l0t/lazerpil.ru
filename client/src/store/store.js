@@ -66,7 +66,7 @@ const store = new Vuex.Store({
 
             console.log(state.reviews_summary)
 
-            Math.ceil(state.reviews_summary)
+            state.reviews_summary = Math.ceil(state.reviews_summary)
 
             console.log(state.reviews_summary)
         },
