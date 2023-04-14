@@ -260,6 +260,8 @@ export default {
       gap: 20px;
     }
     &__item {
+      max-width: 590px;
+      width: 100%;
       height: fit-content;
     }
     &__card {
