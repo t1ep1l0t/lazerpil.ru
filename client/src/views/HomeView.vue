@@ -405,7 +405,8 @@ export default {
     }
   }
   &__slide {
-    height: 460px;
+    min-height: 460px;
+    height: fit-content;
     padding: 0 10px;
     display: flex!important;
     flex-direction: column;
