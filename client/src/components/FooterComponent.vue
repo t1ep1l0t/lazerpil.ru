@@ -45,7 +45,7 @@
         </div>
         <div class="footer__block">
           <h2 class="footer__title">Телефон</h2>
-          <a href="tel:+78002200022" class="footer__text">8 (800) 22-000-22 </a>
+          <a href="tel:+79264610949" class="footer__text">8 (926) 461 09 49</a>
         </div>
       </div>
       <div class="footer__copy">

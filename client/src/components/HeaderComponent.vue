@@ -16,7 +16,7 @@
         </router-link>
       </nav>
       <div class="header__buttons">
-        <a href="tel:+78002200022" class="header__call">8 (800) 22-000-22</a>
+        <a href="tel:+79264610949" class="header__call">8 (926) 461 09 49</a>
         <router-link class="header__contact" to="/contact-us">записаться</router-link>
         <button class="header__menu" @click="$store.commit('set_menu')">
           <svg width="24" height="24" v-if="!$store.state.menu"
