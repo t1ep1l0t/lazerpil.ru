@@ -75,6 +75,9 @@ import VueSlickCarousel from "vue-slick-carousel";
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
+import present_3 from '../assets/woman-sevice/present-3.jpg'
+import present_5 from '../assets/woman-sevice/present-5.jpg'
+import present_10 from '../assets/woman-sevice/present-10.jpg'
 import white_line from '../assets/woman-sevice/белая линия живота.jpg'
 import biс_classic from '../assets/woman-sevice/Бикини классика.png'
 import bic_total from '../assets/woman-sevice/Бикини тотальное.jpg'
@@ -93,7 +96,6 @@ import fing_hand from '../assets/woman-sevice/пальчики на руках.j
 import podm_vpad from '../assets/woman-sevice/подмышечные впадины.png'
 import podem_foots from '../assets/woman-sevice/подъёмы на ногах.jpg'
 import poyas from '../assets/woman-sevice/поясница.jpg'
-
 import hands_half from '../assets/woman-sevice/руки до локтя.png'
 import hands_all from '../assets/woman-sevice/руки полностью.png'
 import ears from '../assets/woman-sevice/Ушные раковины.jpg'
@@ -136,10 +138,28 @@ export default {
       },
       services: [
         {
+          name: 'Подарочный сертификат',
+          price: 3000,
+          picture: present_3,
+          active: true
+        },
+        {
+          name: 'Подарочный сертификат',
+          price: 5000,
+          picture: present_5,
+          active: false
+        },
+        {
+          name: 'Подарочный сертификат',
+          price: 10000,
+          picture: present_10,
+          active: false
+        },
+        {
           name: 'Белая линия живота',
           price: 500,
           picture: white_line,
-          active: true
+          active: false
         },
         {
           name: 'Бикини классика',
