@@ -839,7 +839,7 @@ export default {
   }
   &__arrow {
     position: absolute;
-    top: 185px;
+    top: 220px;
     left: 0;
   }
   &__result {
