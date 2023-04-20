@@ -68,7 +68,7 @@
       <div class="container">
         <div class="about__inner">
           <div class="about__head">
-            <h2 class="about__title">О СТУДИИ</h2>
+            <h2 class="about__title">О НАС</h2>
           </div>
           <div class="about__content">
             <div class="about__image">
