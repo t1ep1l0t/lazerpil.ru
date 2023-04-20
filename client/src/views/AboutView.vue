@@ -520,11 +520,11 @@ export default {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 30px;
 
     @media (max-width: 800px) {
       flex-wrap: wrap;
-      justify-content: center;
     }
   }
   &__images {
@@ -544,6 +544,11 @@ export default {
     max-height: 208px;
     width: 100%;
     height: 100%;
+
+    @media (max-width: 800px) {
+      max-width: 128px;
+      max-height: 128px;
+    }
   }
   &__desc {
     max-width: 575px;
@@ -559,6 +564,37 @@ export default {
     font-size: 16px;
     line-height: 26px;
     color: #0A0A0A;
+  }
+  &__button {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(1.09091px);
+    width: 160px;
+    height: 160px;
+    margin-top: 10px;
+    border-radius: 50%;
+    border: 1px solid $rose_light;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    transition: all .3s ease;
+    color: $rose_light;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    align-self: center;
+
+    &:hover {
+      background-color: $rose_light;
+      color: #FFFFFF;
+    }
+
+    @media (max-width: 550px) {
+      width: 120px;
+      height: 120px;
+      font-size: 10px;
+      line-height: 16px;
+    }
   }
 }
 .equip {
