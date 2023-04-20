@@ -49,7 +49,7 @@
         </div>
       </div>
       <div class="footer__copy">
-        &#169; 2023 Все права защищены | OOO "Moscow Lazerepil"
+        &#169; 2023 Все права защищены | "Moscow Lazerepil"
       </div>
     </div>
   </footer>
