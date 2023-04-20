@@ -40,7 +40,7 @@
           </div>
           <div class="footer__block">
             <h2 class="footer__title">Время работы</h2>
-            <span class="footer__text">Ежедневно с 09:00 до 22:00</span>
+            <span class="footer__text">Ежедневно с 10:00 до 22:00</span>
           </div>
         </div>
         <div class="footer__block">
