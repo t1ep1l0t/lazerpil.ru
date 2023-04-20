@@ -191,6 +191,35 @@
         </div>
       </div>
     </section>
+    <section class="warranty">
+      <div class="container">
+        <div class="warranty__inner">
+          <div class="warranty__head">
+            <h2 class="warranty__title">
+              Гарантии
+            </h2>
+          </div>
+          <div class="warranty__content">
+            <div class="warranty__images">
+              <img src="../assets/static-images/warranty-cert.png" alt="Сертификат на гарантию" class="warranty__image">
+              <img src="../assets/static-images/warranty-print.png" alt="Гарантия 12 месяцев" class="warranty__print">
+            </div>
+            <div class="warranty__desc">
+              <p class="warranty__text">
+                В нашей студии мы предоставляем гарантию на результат!
+                По окончанию курса выдаём клиенту Сертификат сроком 12 месяцев. Гарантируем вам бесплатное обслуживание в случае если результат не достигнут!
+                Гарантия предоставляется при соблюдении графика проведения процедур и рекомендация специалиста
+                В Зависимости от уровня гормонального фона клиента перечень зон в гарантии может увеличиваться и сокращаться.
+                В гарантии не входят высокогорманальные области: бикини тотальное, ореолы, индивидуальные зоны лица. На случаи беременности и приёма гормональных препаратов гарантия не распространяется.
+              </p>
+            </div>
+          </div>
+          <router-link to="/contact-us" class="warranty__button">
+            записаться на консультацию
+          </router-link>
+        </div>
+      </div>
+    </section>
     <div class="equip">
       <div class="container">
         <div class="equip__inner">
@@ -449,6 +478,87 @@ export default {
     font-weight: 400;
     font-size: 16px;
     line-height: 30px;
+  }
+}
+.warranty {
+  width: 100%;
+  margin-top: 120px;
+
+  @media(max-width: 550px) {
+    margin-top: 60px;
+  }
+
+  &__inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 60px;
+
+    @media(max-width: 550px) {
+      gap: 40px;
+    }
+  }
+  &__head {
+    align-self: center;
+    width: fit-content;
+  }
+  &__title {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 130%;
+    text-transform: uppercase;
+    text-align: center;
+    color: $rose_light;
+
+    @media (max-width: 768px) {
+      font-size: 22px;
+      line-height: 38px;
+    }
+  }
+  &__content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    @media (max-width: 800px) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+  &__images {
+    position: relative;
+    max-width: 480px;
+    width: 100%;
+  }
+  &__image {
+    width: 100%;
+    border-radius: 30px;
+  }
+  &__print {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    max-width: 208px;
+    max-height: 208px;
+    width: 100%;
+    height: 100%;
+  }
+  &__desc {
+    max-width: 575px;
+    width: 100%;
+
+    @media (max-width: 800px) {
+      max-width: none;
+    }
+  }
+  &__text {
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #0A0A0A;
   }
 }
 .equip {
