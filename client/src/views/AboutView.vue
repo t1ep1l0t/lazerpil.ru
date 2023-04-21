@@ -120,7 +120,7 @@
                 <span class="evolution__desc">
                   В 1915 году
                 </span>
-                <img src="../assets/static-images/evolution-4.png" alt="" class="evolution__img">
+                <img src="../assets/static-images/evolution-3.png" alt="" class="evolution__img">
                 <span class="evolution__dashed"></span>
                 <span class="evolution__time">
                   1-3 дня
@@ -133,7 +133,7 @@
                 <span class="evolution__desc">
                   В 1940 году
                 </span>
-                <img src="../assets/static-images/evolution-5.png" alt="" class="evolution__img">
+                <img src="../assets/static-images/evolution-4.png" alt="" class="evolution__img">
                 <span class="evolution__dashed"></span>
                 <span class="evolution__time">
                   1-3 дня
@@ -146,7 +146,7 @@
                 <span class="evolution__desc">
                   В 1940 году
                 </span>
-                <img src="../assets/static-images/evolution-3.png" alt="" class="evolution__img">
+                <img src="../assets/static-images/evolution-5.png" alt="" class="evolution__img">
                 <span class="evolution__dashed"></span>
                 <span class="evolution__time">
                   2 года
