@@ -16,6 +16,7 @@ app.use('/api', router);
 app.use(history({index: '/index.html'}));
 app.use('/', express.static(path.resolve('../client/dist')));
 app.use('/static', express.static(path.resolve('../client/static')));
+app.use('/robots.txt', express.static(path.resolve('./robots.txt')));
 
 
 
