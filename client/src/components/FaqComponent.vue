@@ -30,7 +30,7 @@
                      :key="index"
                 >
                   <h3 class="faq__bold__text" v-if="item.type === 'text-bold'">{{ item.value }}</h3>
-                  <span class="faq__text" v-if="item.type === 'text'">{{ item.value }}</span>
+                  <span class="faq__text" v-if="item.type === 'text'" v-html="item.value" />
                   <ul class="faq__body__list" v-if="item.type === 'list'">
                     <li class="faq__body__item"
                         v-for="(string, index) of item.value"
