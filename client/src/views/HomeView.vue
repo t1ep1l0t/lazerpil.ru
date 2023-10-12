@@ -5,7 +5,7 @@
         <div class="top__inner">
           <h1 class="top__title">
             Студия лазерной эпиляции
-            <span>Moscow Lazerpil</span>
+            <span>Moscow Lazerepil</span>
           </h1>
           <p class="top__desc">
             По окончанию курса процедур выдаем Сертификат сроком 12 месяцев. Гарантируем вам бесплатное обслуживание на поддерживающие процедуры.
